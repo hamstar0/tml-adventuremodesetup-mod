@@ -1,6 +1,5 @@
 # Adventure Mode
-
-Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with many new features and alterations for a completely fresh take on the base game. Here are some of the basics:
+Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with many new features and changes, making for a completely fresh take on the vanilla experience. Here are some of the basics:
 - Building and digging disabled (some exceptions).
 - Use platforms, planks, ropes, and rails (via. kits) to get around.
 - House kits combine NPC housing, bedding, storage, crafting, and fast travel points.
@@ -12,81 +11,87 @@ Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with 
 
 
 This game mode uses the following mods:
-  Adventure Mode Lore,
-  Boss Checklist,
-  Boss Reigns,
-  Bullwhip,
-  Cursed Bones,
-  Cursed Brambles,
-  Enraged,
-  Ergophobia,
-  Findable Mana Crystals,
-  Grappletech,
-  Green Hell,
-  HUD Elements Lib,
-  Locked Abilities,
-  Lost Expeditions,
-  Messages,
-  Mod Libs Camera,
-  Mod Libs Core,
-  Mod Libs Entity Groups,
-  Mod Libs General,
-  Mod Libs Inter-Mod,
-  Mod Libs Maps,
-  Mod Libs Net,
-  Mod Libs NPC Dialogue,
-  Mod Libs Tiles,
-  Mod Libs UI,
-  Mod Libs Utility Content,
-  Mod Utility Panels,
-  More Item Info,
-  Mounted Magic Mirrors,
-  Necrotis,
-  Nihilism,
-  Objectives,
-  Orbs,
-  PKE Meter,
-  Pot Luck,
-  Powerful Magic,
-  Quick Rope,
-  Readable Books,
-  Ruined Items,
-  Steampunk Arsenal,
-  Soul Barriers,
-  Surroundings,
-  Terrain Remixer,
-  The Mad Ranger,
-  The Trickster,
-  WorldGates
+- Adventure Mode - Basics
+- Adventure Mode - Lore
+- Boss Checklist
+- Boss Reigns
+- Bullwhip
+- Cursed Bones
+- Cursed Brambles
+- Enraged
+- Ergophobia
+- Findable Mana Crystals
+- Grappletech
+- Green Hell
+- HUD Elements Lib
+- Locked Abilities
+- Lost Expeditions
+- Messages
+- Mod Libs Camera
+- Mod Libs Core
+- Mod Libs Entity Groups
+- Mod Libs General
+- Mod Libs Inter-Mod
+- Mod Libs Maps
+- Mod Libs Net
+- Mod Libs NPC Dialogue
+- Mod Libs Tiles
+- Mod Libs UI
+- Mod Libs Utility Content
+- Mod Utility Panels
+- More Item Info
+- Mounted Magic Mirrors
+- Necrotis
+- Nihilism
+- Objectives
+- Orbs
+- PKE Meter
+- Pot Luck
+- Powerful Magic
+- Quick Rope
+- Readable Books
+- Ruined Items
+- Steampunk Arsenal
+- Soul Barriers
+- Surroundings
+- Terrain Remixer
+- The Mad Ranger
+- The Trickster
+- WorldGates
 
 
 Credits:
-  Mods:
-    jopojelly, et al (Boss Checklist)
-    Chik3r (Quick Ropes)
-  Sprites:
-    Arcri
-    Blasfah
-    Gizmo
-    koolaidlemonade
-  Templates:
-    mcmanybucks (raft)
-  Test Hosting:
-    Nodecraft
-  Testers:
-    Agrair
-    Arcri
-    Blasfah
-    CrabBar
-    direwolf420
-    Fiendzy
-    Flashkirby99
-    FuryForged
-    Hayden
-    koolaidlemonade
-    PeasantUnit
-    Planterrer
-    Retro
-    Waasephi
+
+Mods:
+- jopojelly, et al (Boss Checklist)
+- Chik3r (Quick Ropes)
+
+Sprites:
+- Arcri
+- Blasfah
+- Gizmo
+- koolaidlemonade
+
+Templates:
+- mcmanybucks (raft)
+
+Hosting (Testing):
+- Nodecraft
+
+Testers:
+- Agrair
+- Arcri
+- Blasfah
+- CrabBar
+- direwolf420
+- Fiendzy
+- Flashkirby99
+- FuryForged
+- Hayden
+- koolaidlemonade
+- PeasantUnit
+- Planterrer
+- Retro
+- Waasephi
 
 https://forums.terraria.org/index.php?threads/adventure-mode.85140/
