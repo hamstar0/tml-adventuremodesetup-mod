@@ -10,16 +10,16 @@ using Terraria.ModLoader;
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
 		public enum LoadStatus {
-			Loaded = 0,
-			Unloaded = 1,
-			MissingInternally = 2,
-			MissingExternally = 4
+			Loaded = 1,
+			Unloaded = 2,
+			MissingInternally = 4,
+			MissingExternally = 8
 		}
 
 
 
 		private LoadStatus GetModStatusFlags( string modName ) {
-			LoadStatus statusFlags = LoadStatus.Loaded;  //"Success.";
+			LoadStatus statusFlags = 0;
 
 			string modFileNameExt = modName + ".tmod";
 			string fullFilePath = Main.SavePath
@@ -52,9 +52,9 @@ namespace AdventureModeSetup {
 
 			//
 
-			if( !ModLoader.Mods.Any(m => m.Name == modName) ) {
-				statusFlags |= LoadStatus.Unloaded;
-			}
+			statusFlags |= ModLoader.Mods.Any( m => m.Name == modName )
+				? LoadStatus.Loaded  //"Success.";
+				: LoadStatus.Unloaded;
 
 			return statusFlags;
 		}
@@ -63,40 +63,35 @@ namespace AdventureModeSetup {
 		////////////////
 
 		private void GetEachModStatus(
-					IEnumerable<string> gameModeMods,
-					out ISet<string> unloadedMods,
-					out ISet<string> nonexistentMods ) {
-			unloadedMods = new HashSet<string>();
-			nonexistentMods = new HashSet<string>();
+					IEnumerable<ModInfo> gameModeModEntries,
+					out ISet<ModInfo> unloadedMods,
+					out ISet<ModInfo> nonexistentMods ) {
+			unloadedMods = new HashSet<ModInfo>();
+			nonexistentMods = new HashSet<ModInfo>();
 
-			foreach( string modName in gameModeMods ) {
-				if( ModLoader.Mods.Any( m => m.Name == modName ) ) {
-					//this.Logger.Info( $"Adventure Mode Setup - {modName} already installed and running." );
-					continue;
-				}
+			foreach( ModInfo modInfo in gameModeModEntries ) {
+				LoadStatus statusFlags = this.GetModStatusFlags( modInfo.Name );
 
 				//
 
-				LoadStatus statusFlags = this.GetModStatusFlags( modName );
-
-				if( (statusFlags & LoadStatus.Loaded) == LoadStatus.Loaded ) {
+				if( statusFlags == LoadStatus.Loaded ) {
 					continue;
 				}
 
 				//
 
 				if( (statusFlags & LoadStatus.MissingInternally) == LoadStatus.MissingInternally ) {
-					this.Logger.Warn( $"Adventure Mode Setup - {modName} install failed:"
+					this.Logger.Warn( $"Adventure Mode Setup - {modInfo.Name} install failed:"
 						+ " Missing mod file internally" );
 				}
 
 				//
 
 				if( (statusFlags & LoadStatus.Unloaded) == LoadStatus.Unloaded ) {
-					unloadedMods.Add( modName );
+					unloadedMods.Add( modInfo );
 				}
 				if( (statusFlags & LoadStatus.MissingExternally) == LoadStatus.MissingExternally ) {
-					nonexistentMods.Add( modName );
+					nonexistentMods.Add( modInfo );
 				}
 			}
 		}

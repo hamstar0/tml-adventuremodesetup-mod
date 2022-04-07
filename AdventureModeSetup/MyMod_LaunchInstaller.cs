@@ -1,7 +1,5 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,8 +7,8 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		private void DeployInstallPromptMenuMode_If( ISet<string> missingMods, ISet<string> unloadedMods ) {
-			if( unloadedMods.Count() == 0 ) {
+		private void DeployInstallPromptMenuMode_If( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
+			if( missingMods.Count == 0 && unloadedMods.Count == 0 ) {
 				return;
 			}
 			if( Main.dedServ ) {
@@ -18,7 +16,7 @@ namespace AdventureModeSetup {
 			}
 
 			//
-
+			
 			Main.MenuUI.SetState( this.InstallPromptUI );
 
 			this.InstallPromptUI.UpdateMissingModsDisplayList( missingMods, unloadedMods );
