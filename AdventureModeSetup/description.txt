@@ -1,0 +1,1 @@
+Adventure Mode Mod Manager provides each of the requisite mods for the adventure game mode, along with some important extras.
