@@ -41,16 +41,16 @@ namespace AdventureModeSetup {
 
 			container.Top.Set( 220f, 0f );
 			container.Height.Set( -220f, 1f );
-AMSMod.Instance.Logger.Info("UI INIT");
 		}
 
 
 		////////////////
 
-		public void UpdateMissingModsDisplayList( IEnumerable<string> missingMods ) {
-			var text = new UIText( "Missing mods:\n"+string.Join("\n ", missingMods) );
+		public void UpdateMissingModsDisplayList( ISet<string> missingMods, ISet<string> unloadedMods ) {
+			var missingText = new UIText( "Missing mods:\n "+string.Join("\n ", missingMods) );
+			var unloadedText = new UIText( "Unloaded mods:\n "+string.Join("\n ", unloadedMods ) );
 
-			this.DialogPanel.Append( text );
+			this.DialogPanel.Append( missingText );
 		}
 	}
 }

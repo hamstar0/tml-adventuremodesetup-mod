@@ -69,7 +69,8 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		private IList<string> MissingMods = new List<string>();
+		private ISet<string> UnloadedMods = new HashSet<string>();
+		private ISet<string> MissingMods = new HashSet<string>();
 
 		////
 		
@@ -95,25 +96,27 @@ namespace AdventureModeSetup {
 			}
 
 			//
-			
-			foreach( string modName in AMSMod.NeededMods ) {
-				if( ModLoader.Mods.Any(m=>m.Name == modName) ) {
-					//this.Logger.Info( $"Adventure Mode Setup - {modName} already installed and running." );
-					continue;
-				}
 
-				//
-
-				if( !this.LoadMod_If(modName, out string result) ) {
-					this.Logger.Info( $"Adventure Mode Setup - {modName} install failed: "+result );
-
-					this.MissingMods.Add( modName );
-				}
-			}
+			this.GetEachModStatus( AMSMod.NeededMods, out this.UnloadedMods, out this.MissingMods );
 
 			//
 
 			On.Terraria.Main.DrawMenu += this.Main_DrawMenu_Inject;
+		}
+
+
+		////////////////
+
+		public override void PostAddRecipes() {
+			this.HasPostAddRecipes = true;
+		}
+
+		public override void PostSetupContent() {
+			this.HasPostSetupContent = true;
+		}
+
+		public override void AddRecipeGroups() {
+			this.HasAddRecipeGroups = true;
 		}
 
 
@@ -131,24 +134,9 @@ namespace AdventureModeSetup {
 				if( !this.HasPrompted ) {
 					this.HasPrompted = true;
 
-					this.DeployInstallPromptMenuMode_If( this.MissingMods );
+					this.DeployInstallPromptMenuMode_If( this.MissingMods, this.UnloadedMods );
 				}
 			}
-		}
-
-
-		////////////////
-
-		public override void PostAddRecipes() {
-			this.HasPostAddRecipes = true;
-		}
-
-		public override void PostSetupContent() {
-			this.HasPostSetupContent = true;
-		}
-
-		public override void AddRecipeGroups() {
-			this.HasAddRecipeGroups = true;
 		}
 	}
 }
