@@ -1,4 +1,4 @@
-Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with many new features and alterations for a completely fresh take on the base game. Here are some of the basics:
+Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with many new features and changes, making for a completely fresh take on the vanilla experience. Here are some of the basics:
 - Building and digging disabled (some exceptions).
 - Use platforms, planks, ropes, and rails (via. kits) to get around.
 - House kits combine NPC housing, bedding, storage, crafting, and fast travel points.
