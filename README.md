@@ -1,42 +1,92 @@
 # Adventure Mode
 
-Adventure Mode creates a progression-oriented journey designed to replace Terraria's sandbox mode. You will need good decision making, quick wits, and awareness of your surroundings in order to succeed.
+Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with many new features and alterations for a completely fresh take on the base game. Here are some of the basics:
+- Building and digging disabled (some exceptions).
+- Use platforms, planks, ropes, and rails (via. kits) to get around.
+- House kits combine NPC housing, bedding, storage, crafting, and fast travel points.
+- All crafting handled with workbenches (or occasional Demon Altars).
+- Access to new areas made via special Orbs (found by discovery).
+- Ammo is more expensive; use wisely.
+- Talk to the Guide and NPCs for directions.
 
 
-This mode also requires the following mods:
-  Mod Helpers
-  Adventure Mode Lore
-  Orbs
-  Locked Abilities
-  Objectives
-  Chest Implants
-  Terrain Remixer
-  Nihilism
-  Bullwhip
-  The Mad Ranger
-  Findable Mana Crystals
-  Prefab Kits
-  Powerful Magic
-  Mounted Magic Mirrors
-  Cursed Brambles
-  Necrotis
-  Enraged
-  The Trickster
-  Green Hell
-  Readable Books
-  Surroundings
-  PKE Meter
-  Boss Reigns
-  Boss Checklist
-  
+
+This game mode uses the following mods:
+  Adventure Mode Lore,
+  Boss Checklist,
+  Boss Reigns,
+  Bullwhip,
+  Cursed Bones,
+  Cursed Brambles,
+  Enraged,
+  Ergophobia,
+  Findable Mana Crystals,
+  Grappletech,
+  Green Hell,
+  HUD Elements Lib,
+  Locked Abilities,
+  Lost Expeditions,
+  Messages,
+  Mod Libs Camera,
+  Mod Libs Core,
+  Mod Libs Entity Groups,
+  Mod Libs General,
+  Mod Libs Inter-Mod,
+  Mod Libs Maps,
+  Mod Libs Net,
+  Mod Libs NPC Dialogue,
+  Mod Libs Tiles,
+  Mod Libs UI,
+  Mod Libs Utility Content,
+  Mod Utility Panels,
+  More Item Info,
+  Mounted Magic Mirrors,
+  Necrotis,
+  Nihilism,
+  Objectives,
+  Orbs,
+  PKE Meter,
+  Pot Luck,
+  Powerful Magic,
+  Quick Rope,
+  Readable Books,
+  Ruined Items,
+  Steampunk Arsenal,
+  Soul Barriers,
+  Surroundings,
+  Terrain Remixer,
+  The Mad Ranger,
+  The Trickster,
+  WorldGates
+
+
 Credits:
+  Mods:
+    jopojelly, et al (Boss Checklist)
+    Chik3r (Quick Ropes)
+  Sprites:
+    Arcri
+    Blasfah
+    Gizmo
+    koolaidlemonade
   Templates:
     mcmanybucks (raft)
+  Test Hosting:
+    Nodecraft
   Testers:
-    Putan (beta)
-    CrabBar (beta)
-    FuryForged (beta)
-    BlueJay T Gaming (beta)
-    Agrair (beta)
+    Agrair
+    Arcri
+    Blasfah
+    CrabBar
+    direwolf420
+    Fiendzy
+    Flashkirby99
+    FuryForged
+    Hayden
+    koolaidlemonade
+    PeasantUnit
+    Planterrer
+    Retro
+    Waasephi
 
 https://forums.terraria.org/index.php?threads/adventure-mode.85140/
