@@ -18,6 +18,8 @@ namespace AdventureModeSetup {
 
 
 
+		////////////////
+
 		private LoadStatus GetModStatusFlags( string modName ) {
 			LoadStatus statusFlags = 0;
 
@@ -60,7 +62,7 @@ namespace AdventureModeSetup {
 		}
 
 
-		////////////////
+		////
 
 		private void GetEachModStatus(
 					IEnumerable<ModInfo> gameModeModEntries,
@@ -94,6 +96,20 @@ namespace AdventureModeSetup {
 					nonexistentMods.Add( modInfo );
 				}
 			}
+		}
+
+
+		////////////////
+
+		internal void UnpackMods() {
+			f
+		}
+
+
+		////////////////
+		
+		internal void EnableMods( bool backupExistingModsList ) {
+			f
 		}
 	}
 }

@@ -45,8 +45,14 @@ namespace AdventureModeSetup {
 			this.GetEachModStatus( ModInfo.NeededMods, out this.UnloadedMods, out this.MissingMods );
 
 			//
-
+			
 			On.Terraria.Main.DrawMenu += this.Main_DrawMenu_Inject;
+
+			//
+
+			this.HasAddRecipeGroups = false;
+			this.HasPostAddRecipes = false;
+			this.HasPostSetupContent = false;
 		}
 
 
@@ -81,7 +87,7 @@ namespace AdventureModeSetup {
 				if( !this._HasPrompted ) {
 					this._HasPrompted = true;
 
-					this.DeployInstallPromptMenuMode_If( this.MissingMods, this.UnloadedMods );
+					this.OpenInstallPromptMenu_If( this.MissingMods, this.UnloadedMods );
 				}
 			}
 		}

@@ -69,7 +69,7 @@ namespace AdventureModeSetup {
 		}
 
 
-		public override void OnActivate() {
+		public override void OnInitialize() {
 			this.RemoveAllChildren();
 
 			//
@@ -77,10 +77,11 @@ namespace AdventureModeSetup {
 			this.DialogPanel = new UIPanel();
 			this.DialogPanel.Top.Set( 220f, 0f );
 			this.DialogPanel.HAlign = 0.5f;
-			this.DialogPanel.MaxWidth.Set( 800f, 0f );
-			this.DialogPanel.MinWidth.Set( 600f, 0f );
-			this.DialogPanel.Width.Set( 0f, 0.8f );
-			this.DialogPanel.Height.Set( -288f, 1f );
+			//this.DialogPanel.MaxWidth.Set( 800f, 0f );
+			//this.DialogPanel.MinWidth.Set( 600f, 0f );
+			//this.DialogPanel.Width.Set( 0f, 0.8f );
+			this.DialogPanel.Width.Set( 800, 0f );
+			this.DialogPanel.Height.Set( -224f, 1f );
 			this.Append( this.DialogPanel );
 
 			//
@@ -89,6 +90,15 @@ namespace AdventureModeSetup {
 			okButton.Top.Set( -48f, 1f );
 			okButton.Left.Set( -192f, 0.5f );
 			okButton.Width.Set( 128f, 0f );
+			okButton.OnClick += ( _, __ ) => {
+				var mymod = AMSMod.Instance;
+				mymod.UnpackMods();
+				mymod.EnableMods( true );
+
+				mymod.OpenModUpdatesModBrowserMenu_If();
+
+				Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
+			};
 			this.DialogPanel.Append( okButton );
 
 			var cancelButton = new UITextPanel<string>( "Cancel" );
@@ -97,6 +107,7 @@ namespace AdventureModeSetup {
 			cancelButton.Width.Set( 128f, 0f );
 			cancelButton.OnClick += (_, __) => {
 				Main.menuMode = 0;
+
 				Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
 			};
 			this.DialogPanel.Append( cancelButton );
@@ -105,7 +116,7 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		public void UpdateMissingModsDisplayList( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
+		public void InitializationFinal( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
 			UIElement RenderMod( ModInfo modInfo ) {
 				var elem = new UIText( modInfo.DisplayName );
 				return elem;
@@ -113,49 +124,75 @@ namespace AdventureModeSetup {
 
 			//
 
-			float top = 0f;
+			float currentY = 0f;
 
 			//
 
-			var welcomeText = new UIText( "Welcome to Adventure Mode!" );
-			this.DialogPanel.Append( welcomeText );
+			string welcomeMsg = "Welcome to Adventure Mode!";
 
-			top += 32f;
+			currentY += 32f;
 
 			//
 
 			if( missingMods.Count > 0 ) {
-				welcomeText.SetText( welcomeText.Text+" To begin, the following mods will be installed:" );
+				welcomeMsg += " To begin, the following mods will be installed:";
 
 				//
 
-				var missingModListPanel = new UIList();
-				missingModListPanel.Top.Set( top, 0f );
-				missingModListPanel.Width.Set( -25f, 1f );
-				missingModListPanel.Height.Set( 240f, 0f );
-				missingModListPanel.AddRange( missingMods
-					.OrderBy( m => m.Name )
-					.Select( m => RenderMod(m) )
-				);
-				this.DialogPanel.Append( missingModListPanel );
+				this.DialogPanel.Append( this.InitailizeMissingModsList(missingMods) );
+				var missingModListContainer = new UIPanel();
+				missingModListContainer.Top.Set( currentY, 0f );
+				missingModListContainer.Width.Set( 0f, 1f );
+				missingModListContainer.Height.Set( 160f, 0f );
 
-				var scrollbar = new UIScrollbar();
-				scrollbar.Top.Set( top + 8f, 0f );
-				scrollbar.Left.Set( -24f, 1f );
-				scrollbar.Height.Set( -16f, 1f );
-				scrollbar.SetView( 100f, 1000f );
-				scrollbar.HAlign = 0f;
+				this.DialogPanel.Append( missingModListContainer );
 
-				missingModListPanel.SetScrollbar( scrollbar );
+				{
+					var missingModListElem = new UIList();
+					missingModListElem.Top.Set( 0f, 0f );
+					missingModListElem.Width.Set( -25f, 1f );
+					missingModListElem.Height.Set( 0f, 1f );
 
-				top += 248f;
+					missingModListContainer.Append( missingModListElem );
+
+					//
+
+					var scrollbar = new UIScrollbar();
+					scrollbar.Top.Set( 0f, 0f );
+					scrollbar.Left.Set( -24f, 1f );
+					scrollbar.Height.Set( -8f, 1f );
+					scrollbar.SetView( 100f, 1000f );
+					scrollbar.HAlign = 0f;
+
+					missingModListElem.SetScrollbar( scrollbar );
+
+					missingModListContainer.Append( scrollbar );
+
+					//
+
+					IEnumerable<UIElement> missingModListElements = missingMods
+						.OrderBy( m => m.DisplayName )
+						.Select( m => RenderMod(m) );
+					foreach( UIElement listElem in missingModListElements ) {
+						missingModListElem.Add( listElem );
+					}
+				}
+
+				currentY += 168f;
 			}
 
 			//
 
-			string text = $"{unloadedMods.Count} (of {ModInfo.NeededMods.Length}) mods will need to be enabled"
-				+" to play this game mode. Your existing enabled mods will be backed up as the 'Pre AM Backup'"
-				+" mod pack (see the Mods->Mod Packs menu)."
+			var welcomeText = new UIText( welcomeMsg );
+			welcomeText.Top.Set( 0f, 0f );
+			this.DialogPanel.Append( welcomeText );
+
+			//
+
+			//int activeMods = ModInfo.NeededMods.Length - unloadedMods.Count;
+			string text = $"{unloadedMods.Count} mods will need to be enabled to play this game mode. Your"
+				+" existing enabled mods will be backed up as the 'Pre AM Backup' mod pack (see the Mods->Mod"
+				+" Packs menu)."
 				+" \n "
 				+"After installation, a list of available mod updates will appear. If any mods need updates,"
 				+" download them then, reload your mods (via. Mods menu), and you're ready to play. Happy trails!";
@@ -174,11 +211,11 @@ namespace AdventureModeSetup {
 			foreach( string line in lines ) {
 				if( line != "" ) {
 					var gameModeInfoText = new UIText( line );
-					gameModeInfoText.Top.Set( top, 0f );
+					gameModeInfoText.Top.Set( currentY, 0f );
 					this.DialogPanel.Append( gameModeInfoText );
 				}
 
-				top += 24f;
+				currentY += 24f;
 			}
 		}
 
