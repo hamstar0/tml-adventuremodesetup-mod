@@ -1,5 +1,5 @@
 displayName = Adventure Mode
 author = hamstar
-version = 0.2.0
+version = 0.2.1
 buildIgnore = *.csproj, *.user, *.bat, obj\*, bin\*, .vs\*, .git\*
 homepage = https://forums.terraria.org/index.php?threads/adventure-mode.85140/

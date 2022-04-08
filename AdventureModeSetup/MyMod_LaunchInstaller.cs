@@ -25,10 +25,6 @@ namespace AdventureModeSetup {
 
 			//Main.menuMode = Math.Abs( Math.Abs(this.GetHashCode()) + 20000 );
 			Main.menuMode = 888;
-
-			//
-			
-			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
 		}
 	}
 }
