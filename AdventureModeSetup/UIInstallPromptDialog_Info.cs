@@ -57,39 +57,67 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		private IEnumerable<UIElement> CreateInfoElements( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
-			var list = new List<UIElement>();
+		private IEnumerable<(UIElement elem, float height)> CreateInfoElements(
+					ISet<ModInfo> missingMods,
+					ISet<ModInfo> unloadedMods ) {
+			var elements = new List<(UIElement, float)>();
+
+			//
+
+			void StoreElementsFromTexts( IEnumerable<string> mylines ) {
+				foreach( string line in mylines ) {
+					elements.Add( (new UIText(line), 24f) );
+				}
+			}
 
 			//
 
 			//int activeMods = ModInfo.NeededMods.Length - unloadedMods.Count;
-			string text = $"{unloadedMods.Count} mods will need to be enabled to play this game mode. Your"
+			string text1 = $"{unloadedMods.Count} mods will need to be enabled to play this game mode. Your"
 				+ " existing enabled mods will be backed up as the 'Pre AM Backup' mod pack (see the Mods->Mod"
-				+ " Packs menu)."
-				+ " \n "
-				+ "After installation, a list of available mod updates will appear. If any mods need updates,"
-				+ " download them then, reload your mods (via. Mods menu), and you're ready to play. Happy trails!";
+				+ " Packs menu).";
+			string text2 = "After installation, a list of available mod updates will appear. If any mods need"
+				+" updates, download them then, reload your mods (via. Mods menu), and you're ready to play."
+				+" Happy trails!";
 
 			//
 
 			float containerWidth = this.DialogPanel.GetDimensions().Width;
-			containerWidth = containerWidth < 240f
-				? 240f
-				: containerWidth;
-
-			IList<string> lines = UIInstallPromptDialog.GetFittedLines( text, containerWidth - 16f );
+			containerWidth = Math.Max( 240f, containerWidth - 8f );
 
 			//
 
-			foreach( string line in lines ) {
-				if( line != "" ) {
-					list.Add( new UIText(line) );
-				} else {
-					list.Add( null );
-				}
-			}
+			IList<string> lines1 = UIInstallPromptDialog.GetFittedLines( text1, containerWidth );
+			StoreElementsFromTexts( lines1 );
 
-			return list;
+			//
+
+			UIImage img1 = new UIImage( AMSMod.Instance.GetTexture("Instruction1") );
+			img1.ImageScale = 0.5f;
+			img1.MarginLeft = -152f;
+			img1.MarginTop = -24f;
+			img1.SetPadding( 0f );
+
+			elements.Add( (img1, 52f) );
+
+			//
+
+			IList<string> lines2 = UIInstallPromptDialog.GetFittedLines( text2, containerWidth );
+			StoreElementsFromTexts( lines2 );
+
+			//
+
+			UIImage img2 = new UIImage( AMSMod.Instance.GetTexture("Instruction2") );
+			img2.ImageScale = 0.5f;
+			img2.MarginLeft = -152f;
+			img2.MarginTop = -24f;
+			img2.SetPadding( 0f );
+
+			elements.Add( (img2, 52f) );
+
+			//
+
+			return elements;
 		}
 	}
 }

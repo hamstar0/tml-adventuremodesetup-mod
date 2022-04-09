@@ -9,10 +9,13 @@ using Terraria.GameContent.UI.Elements;
 
 namespace AdventureModeSetup {
 	partial class UIInstallPromptDialog : UIState {
-		private UIPanel CreateMissingModsListPanel( ISet<ModInfo> missingMods, out UIList missingModsListElement ) {
+		private UIPanel CreateMissingModsListPanel(
+					ISet<ModInfo> missingMods,
+					float height,
+					out UIList missingModsListElement ) {
 			var missingModListContainer = new UIPanel();
 			missingModListContainer.Width.Set( 0f, 1f );
-			missingModListContainer.Height.Set( 160f, 0f );
+			missingModListContainer.Height.Set( height, 0f );
 
 			{
 				missingModsListElement = new UIList();

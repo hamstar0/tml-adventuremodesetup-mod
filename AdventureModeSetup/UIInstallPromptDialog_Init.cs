@@ -18,16 +18,16 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		public void InitializeFinal( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
-			float currentY = 0f;
+		public void OnInitializeFinal( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
+			float currentTopPos = 0f;
 
 			void Append( UIElement elem, float height ) {
 				if( elem != null ) {
-					elem.Top.Set( currentY, 0f );
-					this.Append( elem );
+					elem.Top.Set( currentTopPos, 0f );
+					this.DialogPanel.Append( elem );
 				}
 
-				currentY += height;
+				currentTopPos += height;
 			}
 
 			//
@@ -37,22 +37,32 @@ namespace AdventureModeSetup {
 				welcomeMsg += " To begin, the following mods will be installed:";
 			}
 
+			//
+
+			float listHeight = 96f;
+
 			UIPanel listPanel = missingMods.Count > 0
-				? this.CreateMissingModsListPanel( missingMods, out this.MissingModsListElement )
+				? this.CreateMissingModsListPanel( missingMods, listHeight, out this.MissingModsListElement )
 				: null;
 
-			IEnumerable<UIElement> infoElems = this.CreateInfoElements( missingMods, unloadedMods );
+			//
+
+			IEnumerable<(UIElement elem, float height)> infoElems = this.CreateInfoElements(
+				missingMods,
+				unloadedMods
+			);
 
 			//
 
 			Append( new UIText(welcomeMsg), 32f );
 
 			if( listPanel != null ) {
-				Append( listPanel, listPanel.GetDimensions().Height );
+				Append( listPanel, listHeight );
+				currentTopPos += 8f;
 			}
 
-			foreach( UIElement infoElem in infoElems ) {
-				Append( infoElem, 24f );
+			foreach( (UIElement infoElem, float height) in infoElems ) {
+				Append( infoElem, height );
 			}
 		}
 	}

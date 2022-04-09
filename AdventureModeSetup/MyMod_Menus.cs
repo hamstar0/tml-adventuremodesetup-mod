@@ -59,25 +59,12 @@ namespace AdventureModeSetup {
 			
 			Main.MenuUI.SetState( this.InstallPromptUI );
 
-			this.InstallPromptUI.InitializeFinal( missingMods, unloadedMods );
+			this.InstallPromptUI.OnInitializeFinal( missingMods, unloadedMods );
 
 			//
 
 			//Main.menuMode = Math.Abs( Math.Abs(this.GetHashCode()) + 20000 );
 			Main.menuMode = 888;
-		}
-
-
-		////////////////
-
-		internal void OpenModUpdatesModBrowserMenu_If() {
-			if( Main.dedServ ) {
-				return;
-			}
-
-			//
-			
-			Main.menuMode = 0;
 		}
 	}
 }
