@@ -59,7 +59,7 @@ namespace AdventureModeSetup {
 			
 			Main.MenuUI.SetState( this.InstallPromptUI );
 
-			this.InstallPromptUI.InitializationFinal( missingMods, unloadedMods );
+			this.InstallPromptUI.InitializeFinal( missingMods, unloadedMods );
 
 			//
 
