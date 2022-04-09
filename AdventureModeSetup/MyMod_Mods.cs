@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using Newtonsoft.Json;
+using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,6 +16,12 @@ namespace AdventureModeSetup {
 			MissingInternally = 4,
 			MissingExternally = 8
 		}
+
+
+
+		////////////////
+
+		public const string BackupFileBaseName = "Pre AM Mods List Backup";
 
 
 
@@ -88,6 +93,22 @@ namespace AdventureModeSetup {
 			dataJson += $"\n]";
 
 			File.WriteAllText( modListJsonFullPath, dataJson );
+
+			//
+
+			this.EnableModsInternally( gameModeModInfos );
+		}
+
+		private void EnableModsInternally( ModInfo[] gameModeModInfos ) {
+			FieldInfo enabledModsFieldInfo = typeof( ModLoader )
+				.GetField( "_enabledMods", BindingFlags.NonPublic | BindingFlags.Static );
+
+			object rawInternalEnabledModsData = enabledModsFieldInfo.GetValue( null );
+			HashSet<string> internalEnabledModsData = rawInternalEnabledModsData as HashSet<string>;
+
+			foreach( ModInfo modInfo in gameModeModInfos ) {
+				internalEnabledModsData.Add( modInfo.Name );
+			}
 		}
 
 
@@ -112,11 +133,11 @@ namespace AdventureModeSetup {
 
 			//
 
-			string backupPath = $"{modPacksFolder}{div}Pre AM Mods List Backup.json";
+			string backupPath = $"{modPacksFolder}{div}{AMSMod.BackupFileBaseName}.json";
 
 //this.Logger.Info( $"folder 1: \"{backupPath}\"" );
 			for( int i=0; FileUtilities.Exists(backupPath, false); i++ ) {
-				backupPath = $"{modPacksFolder}{div}Pre AM Mods List Backup ({i}).json";
+				backupPath = $"{modPacksFolder}{div}{AMSMod.BackupFileBaseName} ({i}).json";
 			}
 
 			//

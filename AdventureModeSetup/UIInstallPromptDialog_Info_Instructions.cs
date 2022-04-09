@@ -73,12 +73,11 @@ namespace AdventureModeSetup {
 			//
 
 			//int activeMods = ModInfo.NeededMods.Length - unloadedMods.Count;
-			string text1 = $"{unloadedMods.Count} mods will need to be enabled to play this game mode. Your"
-				+ " existing enabled mods will be backed up as the 'Pre AM Backup' mod pack (see the Mods->Mod"
-				+ " Packs menu).";
-			string text2 = "After installation, a list of available mod updates will appear. If any mods need"
-				+" updates, download them then, reload your mods (via. Mods menu), and you're ready to play."
-				+" Happy trails!";
+			string text1 = $"{ModInfo.NeededMods.Length} mods will need to be enabled to play this game mode. Any"
+				+$" existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}' mod pack (see"
+				+$" the Mods -> Mod Packs menu).";
+			string text2 = $"Finally, reload your mods (via. Mods menu), and you're ready to play. Be sure to"
+				+$" check if any mod updates exist in the Mod Browser menu, if you want. Happy trails!";
 
 			//
 
