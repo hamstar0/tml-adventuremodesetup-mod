@@ -18,6 +18,7 @@ namespace AdventureModeSetup {
 
 		////
 
+		private ISet<ModInfo> OutdatedMods = new HashSet<ModInfo>();
 		private ISet<ModInfo> UnloadedMods = new HashSet<ModInfo>();
 		private ISet<ModInfo> MissingMods = new HashSet<ModInfo>();
 
@@ -42,7 +43,12 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.GetEachModStatus( ModInfo.NeededMods, out this.UnloadedMods, out this.MissingMods );
+			this.GetEachModStatus(
+				gameModeModEntries: ModInfo.NeededMods,
+				outdatedMods: out this.OutdatedMods,
+				unloadedMods: out this.UnloadedMods,
+				nonexistentMods: out this.MissingMods
+			);
 
 			//
 			

@@ -10,17 +10,6 @@ using Terraria.Utilities;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		public enum LoadStatus {
-			Loaded = 1,
-			Unloaded = 2,
-			MissingInternally = 4,
-			MissingExternally = 8
-		}
-
-
-
-		////////////////
-
 		public const string BackupFileBaseName = "Pre AM Mods List Backup";
 
 
@@ -29,8 +18,10 @@ namespace AdventureModeSetup {
 
 		private void GetEachModStatus(
 					IEnumerable<ModInfo> gameModeModEntries,
+					out ISet<ModInfo> outdatedMods,
 					out ISet<ModInfo> unloadedMods,
 					out ISet<ModInfo> nonexistentMods ) {
+			outdatedMods = new HashSet<ModInfo>();
 			unloadedMods = new HashSet<ModInfo>();
 			nonexistentMods = new HashSet<ModInfo>();
 
@@ -52,6 +43,9 @@ namespace AdventureModeSetup {
 
 				//
 
+				if( (statusFlags & LoadStatus.Outdated) == LoadStatus.Outdated ) {
+					outdatedMods.Add( modInfo );
+				}
 				if( (statusFlags & LoadStatus.Unloaded) == LoadStatus.Unloaded ) {
 					unloadedMods.Add( modInfo );
 				}
@@ -64,16 +58,18 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		internal void UnpackMods( ModInfo[] gameModeModInfos ) {
-			foreach( ModInfo modInfo in gameModeModInfos ) {
-				this.UnpackMod_If( modInfo.Name );
+		internal void UnpackMods_Current() {
+			foreach( ModInfo modInfo in ModInfo.NeededMods ) {
+				bool forceUnpack = this.OutdatedMods.Contains( modInfo );
+
+				this.UnpackMod_If( modInfo.Name, forceUnpack );
 			}
 		}
 
 
 		////////////////
 
-		internal void EnableMods( ModInfo[] gameModeModInfos ) {
+		internal void EnableMods_Current() {
 			char div = Path.DirectorySeparatorChar;
 			string modsFolder = Main.SavePath
 				+ div
@@ -87,7 +83,7 @@ namespace AdventureModeSetup {
 			//string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
 			//string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
 			string dataJson = $"[\n  \"{this.Name}\"";
-			foreach( ModInfo modInfo in gameModeModInfos ) {
+			foreach( ModInfo modInfo in ModInfo.NeededMods ) {
 				dataJson += $",\n  \"{modInfo.Name}\"";
 			}
 			dataJson += $"\n]";
@@ -96,7 +92,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.EnableModsInternally( gameModeModInfos );
+			this.EnableModsInternally( ModInfo.NeededMods );
 		}
 
 		private void EnableModsInternally( ModInfo[] gameModeModInfos ) {

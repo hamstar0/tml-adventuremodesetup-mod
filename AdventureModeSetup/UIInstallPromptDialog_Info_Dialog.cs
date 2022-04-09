@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
@@ -22,19 +23,29 @@ namespace AdventureModeSetup {
 
 			{
 				var okButton = new UITextPanel<string>( "OK" );
+				var cancelButton = new UITextPanel<string>( "Cancel" );
+
+				Color unlit = okButton.BackgroundColor;
+				Color lit = unlit * 1.35f;
+
+				//
+
 				okButton.Top.Set( -40f, 1f );
 				okButton.Left.Set( -256f, 1f );
 				okButton.Width.Set( 128f, 0f );
 				okButton.OnClick += ( _, __ ) => this.ConfirmInstall();
+				okButton.OnMouseOver += ( _, __ ) => okButton.BackgroundColor = lit;
+				okButton.OnMouseOut += ( _, __ ) => okButton.BackgroundColor = unlit;
 				dialogPanel.Append( okButton );
 
 				//
 
-				var cancelButton = new UITextPanel<string>( "Cancel" );
 				cancelButton.Top.Set( -40f, 1f );
 				cancelButton.Left.Set( -128f, 1f );
 				cancelButton.Width.Set( 128f, 0f );
 				cancelButton.OnClick += ( _, __ ) => this.CancelInstall();
+				cancelButton.OnMouseOver += ( _, __ ) => cancelButton.BackgroundColor = lit;
+				cancelButton.OnMouseOut += ( _, __ ) => cancelButton.BackgroundColor = unlit;
 				dialogPanel.Append( cancelButton );
 			}
 
@@ -48,9 +59,9 @@ namespace AdventureModeSetup {
 
 		private void ConfirmInstall() {
 			var mymod = AMSMod.Instance;
-			mymod.UnpackMods( ModInfo.NeededMods );
+			mymod.UnpackMods_Current();
 			mymod.BackupEnabledMods();
-			mymod.EnableMods( ModInfo.NeededMods );
+			mymod.EnableMods_Current();
 
 			//
 

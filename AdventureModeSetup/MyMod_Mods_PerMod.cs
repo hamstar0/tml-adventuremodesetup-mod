@@ -9,6 +9,18 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
+		public enum LoadStatus {
+			Loaded = 1,
+			Unloaded = 2,
+			MissingInternally = 4,
+			MissingExternally = 8,
+			Outdated = 16
+		}
+
+
+
+		////////////////
+
 		public static string GetModFullFilePath( string modName, out string modFileNameExt ) {
 			modFileNameExt = modName + ".tmod";
 			return Main.SavePath
@@ -17,6 +29,7 @@ namespace AdventureModeSetup {
 				+ Path.DirectorySeparatorChar
 				+ modFileNameExt;
 		}
+
 
 
 		////////////////
@@ -46,13 +59,27 @@ namespace AdventureModeSetup {
 				? LoadStatus.Loaded  //"Success.";
 				: LoadStatus.Unloaded;
 
+			//
+
+			Mod currMod = ModLoader.GetMod( modName );
+
+			if( currMod != null ) {
+				ModInfo currModInfo = ModInfo.NeededMods.FirstOrDefault( mi => mi.Name == modName );
+
+				if( currMod.Version < currModInfo.MinVersion ) {
+					statusFlags |= LoadStatus.Outdated;
+				}
+			}
+
+			//
+
 			return statusFlags;
 		}
 
 
 		////////////////
 
-		private bool UnpackMod_If( string modName ) {
+		private bool UnpackMod_If( string modName, bool forceUnpack ) {
 			LoadStatus statusFlags = this.GetModStatusFlags( modName );
 
 			if( (statusFlags & LoadStatus.MissingExternally) == 0 ) {
@@ -62,6 +89,16 @@ namespace AdventureModeSetup {
 			//
 
 			string fullFilePath = AMSMod.GetModFullFilePath( modName, out string modFileNameExt );
+
+			if( !File.Exists(fullFilePath) ) {
+				if( !forceUnpack ) {
+					return false;
+				}
+
+				File.Delete( fullFilePath );
+			}
+
+			//
 
 			string internalFilePath = $"ModFiles/{modFileNameExt}";
 
