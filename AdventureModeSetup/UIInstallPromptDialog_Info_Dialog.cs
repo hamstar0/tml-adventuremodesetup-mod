@@ -25,8 +25,9 @@ namespace AdventureModeSetup {
 				okButton.Width.Set( 128f, 0f );
 				okButton.OnClick += ( _, __ ) => {
 					var mymod = AMSMod.Instance;
-					mymod.UnpackMods();
-					mymod.EnableMods( true );
+					mymod.UnpackMods( ModInfo.NeededMods );
+					mymod.BackupEnabledMods();
+					mymod.EnableMods( ModInfo.NeededMods );
 
 					Main.menuMode = 10007;
 

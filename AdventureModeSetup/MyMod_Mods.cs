@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 
 namespace AdventureModeSetup {
@@ -19,50 +21,6 @@ namespace AdventureModeSetup {
 
 
 		////////////////
-
-		private LoadStatus GetModStatusFlags( string modName ) {
-			LoadStatus statusFlags = 0;
-
-			string modFileNameExt = modName + ".tmod";
-			string fullFilePath = Main.SavePath
-				+Path.DirectorySeparatorChar
-				+"Mods"
-				+Path.DirectorySeparatorChar
-				+modFileNameExt;
-
-			//
-
-			if( !File.Exists(fullFilePath) ) {
-				statusFlags |= LoadStatus.MissingExternally;	//"Mod file already exists.";
-			}
-
-			//
-
-			if( !this.FileExists(modFileNameExt) ) {
-				statusFlags |= LoadStatus.MissingInternally;	//"Installer is missing mod file internally.";
-			}
-
-			//byte[] modFileData = this.GetFileBytes( modFileNameExt );
-			//
-			//
-			//
-			//File.WriteAllBytes( fullFilePath, modFileData );
-			//
-			//if( !File.Exists(fullFilePath) ) {
-			//	throw new Exception( $"Could not write mod file {modFileName}." );
-			//}
-
-			//
-
-			statusFlags |= ModLoader.Mods.Any( m => m.Name == modName )
-				? LoadStatus.Loaded  //"Success.";
-				: LoadStatus.Unloaded;
-
-			return statusFlags;
-		}
-
-
-		////
 
 		private void GetEachModStatus(
 					IEnumerable<ModInfo> gameModeModEntries,
@@ -101,15 +59,60 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		internal void UnpackMods() {
-			
+		internal void UnpackMods( ModInfo[] gameModeModInfos ) {
+			foreach( ModInfo modInfo in gameModeModInfos ) {
+				this.UnpackMod_If( modInfo.Name );
+			}
 		}
 
 
 		////////////////
-		
-		internal void EnableMods( bool backupExistingModsList ) {
-			
+
+		internal void EnableMods( ModInfo[] gameModeModInfos ) {
+			string modsPath = Main.SavePath
+				+ Path.DirectorySeparatorChar
+				+ "Mods";
+			string modListJsonFullPath = modsPath
+				+ Path.DirectorySeparatorChar
+				+ "enabled.json";
+
+			//
+
+			string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
+			string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
+
+			File.WriteAllText( modListJsonFullPath, dataJson );
+		}
+
+
+		////////////////
+
+		internal void BackupEnabledMods() {
+			string modsPath = Main.SavePath
+				+ Path.DirectorySeparatorChar
+				+ "Mods";
+			string modListJsonFullPath = modsPath
+				+ Path.DirectorySeparatorChar
+				+ "enabled.json";
+			string modPacksPath = modsPath
+				+ Path.DirectorySeparatorChar
+				+ "ModPacks"
+				+ Path.DirectorySeparatorChar;
+
+			//
+
+			byte[] buf = FileUtilities.ReadAllBytes( modListJsonFullPath, false );
+			string enabledJson = System.Text.Encoding.UTF8.GetString( buf );
+
+			//
+
+			string backupPath = $"{modPacksPath}Pre AM Mods.json";
+
+			for( int i=0; FileUtilities.Exists(backupPath, false); i++ ) {
+				backupPath = $"{modPacksPath}Pre AM Mods ({i}).json";
+			}
+
+			File.WriteAllText( modListJsonFullPath, enabledJson );
 		}
 	}
 }
