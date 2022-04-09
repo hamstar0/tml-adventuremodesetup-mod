@@ -26,7 +26,7 @@ namespace AdventureModeSetup {
 				var cancelButton = new UITextPanel<string>( "Cancel" );
 
 				Color unlit = okButton.BackgroundColor;
-				Color lit = unlit * 1.35f;
+				Color lit = unlit * 1.25f;
 
 				//
 
