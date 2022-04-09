@@ -93,7 +93,7 @@ namespace AdventureModeSetup {
 				if( !this._HasPrompted ) {
 					this._HasPrompted = true;
 
-					this.OpenInstallPromptMenu_If( this.MissingMods, this.UnloadedMods );
+					this.OpenInstallPromptMenu_If( this.OutdatedMods, this.MissingMods, this.UnloadedMods );
 				}
 			}
 		}

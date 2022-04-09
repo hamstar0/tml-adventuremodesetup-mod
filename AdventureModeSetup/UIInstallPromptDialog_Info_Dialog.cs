@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			this.Append( dialogPanel );
 
 			{
-				var okButton = new UITextPanel<string>( "OK" );
+				var okButton = new UITextPanel<string>( "Install" );
 				var cancelButton = new UITextPanel<string>( "Cancel" );
 
 				Color unlit = okButton.BackgroundColor;

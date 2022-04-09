@@ -47,10 +47,16 @@ namespace AdventureModeSetup {
 
 
 
-		internal void OpenInstallPromptMenu_If( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
-			if( missingMods.Count == 0 && unloadedMods.Count == 0 ) {
-				return;
+		internal void OpenInstallPromptMenu_If(
+					ISet<ModInfo> outdatedMods,
+					ISet<ModInfo> missingMods,
+					ISet<ModInfo> unloadedMods ) {
+			if( !AMSConfig.Instance.ForceInstallPromptEachLoad ) {
+				if( outdatedMods.Count == 0 && missingMods.Count == 0 && unloadedMods.Count == 0 ) {
+					return;
+				}
 			}
+
 			if( Main.dedServ ) {
 				return;
 			}
