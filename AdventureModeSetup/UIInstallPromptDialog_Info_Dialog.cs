@@ -23,16 +23,7 @@ namespace AdventureModeSetup {
 				okButton.Top.Set( -40f, 1f );
 				okButton.Left.Set( -256f, 1f );
 				okButton.Width.Set( 128f, 0f );
-				okButton.OnClick += ( _, __ ) => {
-					var mymod = AMSMod.Instance;
-					mymod.UnpackMods( ModInfo.NeededMods );
-					mymod.BackupEnabledMods();
-					mymod.EnableMods( ModInfo.NeededMods );
-
-					Main.menuMode = 10007;
-
-					Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
-				};
+				okButton.OnClick += ( _, __ ) => this.ConfirmInstall();
 				dialogPanel.Append( okButton );
 
 				//
@@ -41,17 +32,37 @@ namespace AdventureModeSetup {
 				cancelButton.Top.Set( -40f, 1f );
 				cancelButton.Left.Set( -128f, 1f );
 				cancelButton.Width.Set( 128f, 0f );
-				cancelButton.OnClick += ( _, __ ) => {
-					Main.menuMode = 0;
-
-					Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
-				};
+				cancelButton.OnClick += ( _, __ ) => this.CancelInstall();
 				dialogPanel.Append( cancelButton );
 			}
 
 			//
 
 			return dialogPanel;
+		}
+
+
+		////////////////
+
+		private void ConfirmInstall() {
+			var mymod = AMSMod.Instance;
+			mymod.UnpackMods( ModInfo.NeededMods );
+			mymod.BackupEnabledMods();
+			mymod.EnableMods( ModInfo.NeededMods );
+
+			//
+
+			Main.menuMode = 10007;	// mod browser
+
+			//
+
+			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
+		}
+
+		private void CancelInstall() {
+			Main.menuMode = 0;
+
+			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
 		}
 	}
 }

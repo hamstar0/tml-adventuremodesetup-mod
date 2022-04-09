@@ -69,17 +69,23 @@ namespace AdventureModeSetup {
 		////////////////
 
 		internal void EnableMods( ModInfo[] gameModeModInfos ) {
-			string modsPath = Main.SavePath
-				+ Path.DirectorySeparatorChar
+			char div = Path.DirectorySeparatorChar;
+			string modsFolder = Main.SavePath
+				+ div
 				+ "Mods";
-			string modListJsonFullPath = modsPath
-				+ Path.DirectorySeparatorChar
+			string modListJsonFullPath = modsFolder
+				+ div
 				+ "enabled.json";
 
 			//
 
-			string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
-			string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
+			//string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
+			//string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
+			string dataJson = $"[\n  \"{this.Name}\"";
+			foreach( ModInfo modInfo in gameModeModInfos ) {
+				dataJson += $",\n  \"{modInfo.Name}\"";
+			}
+			dataJson += $"\n]";
 
 			File.WriteAllText( modListJsonFullPath, dataJson );
 		}
@@ -88,16 +94,16 @@ namespace AdventureModeSetup {
 		////////////////
 
 		internal void BackupEnabledMods() {
-			string modsPath = Main.SavePath
-				+ Path.DirectorySeparatorChar
+			char div = Path.DirectorySeparatorChar;
+			string modsFolder = Main.SavePath
+				+ div
 				+ "Mods";
-			string modListJsonFullPath = modsPath
-				+ Path.DirectorySeparatorChar
+			string modListJsonFullPath = modsFolder
+				+ div
 				+ "enabled.json";
-			string modPacksPath = modsPath
-				+ Path.DirectorySeparatorChar
-				+ "ModPacks"
-				+ Path.DirectorySeparatorChar;
+			string modPacksFolder = modsFolder
+				+ div
+				+ "ModPacks";
 
 			//
 
@@ -106,13 +112,16 @@ namespace AdventureModeSetup {
 
 			//
 
-			string backupPath = $"{modPacksPath}Pre AM Mods.json";
+			string backupPath = $"{modPacksFolder}{div}Pre AM Mods List Backup.json";
 
+//this.Logger.Info( $"folder 1: \"{backupPath}\"" );
 			for( int i=0; FileUtilities.Exists(backupPath, false); i++ ) {
-				backupPath = $"{modPacksPath}Pre AM Mods ({i}).json";
+				backupPath = $"{modPacksFolder}{div}Pre AM Mods List Backup ({i}).json";
 			}
 
-			File.WriteAllText( modListJsonFullPath, enabledJson );
+			//
+
+			File.WriteAllText( backupPath, enabledJson );
 		}
 	}
 }

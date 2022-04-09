@@ -9,8 +9,8 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		public static string GetModFullFilePath( string modName, string extension, out string modFileNameExt ) {
-			modFileNameExt = modName + extension;
+		public static string GetModFullFilePath( string modName, out string modFileNameExt ) {
+			modFileNameExt = modName + ".tmod";
 			return Main.SavePath
 				+ Path.DirectorySeparatorChar
 				+ "Mods"
@@ -24,7 +24,9 @@ namespace AdventureModeSetup {
 		private LoadStatus GetModStatusFlags( string modName ) {
 			LoadStatus statusFlags = 0;
 
-			string fullFilePath = AMSMod.GetModFullFilePath( modName, ".tmod", out string modFileNameExt );
+			string fullFilePath = AMSMod.GetModFullFilePath( modName, out string modFileNameExt );
+
+			string internalFilePath = $"ModFiles/{modFileNameExt}";
 
 			//
 
@@ -34,7 +36,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			if( !this.FileExists(modFileNameExt) ) {
+			if( !this.FileExists(internalFilePath) ) {
 				statusFlags |= LoadStatus.MissingInternally;	//"Installer is missing mod file internally.";
 			}
 
@@ -59,11 +61,17 @@ namespace AdventureModeSetup {
 
 			//
 
-			string fullFilePath = AMSMod.GetModFullFilePath( modName, ".tmod", out string modFileNameExt );
+			string fullFilePath = AMSMod.GetModFullFilePath( modName, out string modFileNameExt );
+
+			string internalFilePath = $"ModFiles/{modFileNameExt}";
+
+			if( !this.FileExists(internalFilePath) ) {
+				throw new Exception( $"Missing installable mod {modName}" );
+			}
 
 			//
 
-			byte[] modFileData = this.GetFileBytes( modFileNameExt );
+			byte[] modFileData = this.GetFileBytes( internalFilePath );
 
 			File.WriteAllBytes( fullFilePath, modFileData );
 
