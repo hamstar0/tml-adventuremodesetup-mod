@@ -12,6 +12,7 @@ namespace AdventureModeSetup {
 		private UIPanel DialogPanel;
 
 		private UIList MissingModsListElement;
+		private UIList ExtraModsListElement;
 
 
 

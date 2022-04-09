@@ -21,6 +21,7 @@ namespace AdventureModeSetup {
 		private ISet<ModInfo> OutdatedMods = new HashSet<ModInfo>();
 		private ISet<ModInfo> UnloadedMods = new HashSet<ModInfo>();
 		private ISet<ModInfo> MissingMods = new HashSet<ModInfo>();
+		private ISet<string> ExtraMods = new HashSet<string>();
 
 		////
 		
@@ -47,7 +48,8 @@ namespace AdventureModeSetup {
 				gameModeModEntries: ModInfo.NeededMods,
 				outdatedMods: out this.OutdatedMods,
 				unloadedMods: out this.UnloadedMods,
-				nonexistentMods: out this.MissingMods
+				nonexistentMods: out this.MissingMods,
+				extraMods: out this.ExtraMods
 			);
 
 			//
@@ -93,7 +95,12 @@ namespace AdventureModeSetup {
 				if( !this._HasPrompted ) {
 					this._HasPrompted = true;
 
-					this.OpenInstallPromptMenu_If( this.OutdatedMods, this.MissingMods, this.UnloadedMods );
+					this.OpenInstallPromptMenu_If(
+						outdatedMods: this.OutdatedMods,
+						missingMods: this.MissingMods,
+						unloadedMods: this.UnloadedMods,
+						extraMods: this.ExtraMods
+					);
 				}
 			}
 		}

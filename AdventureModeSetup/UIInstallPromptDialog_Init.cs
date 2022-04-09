@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
-using Terraria.GameContent.UI.Elements;
 
 
 namespace AdventureModeSetup {
@@ -16,9 +15,14 @@ namespace AdventureModeSetup {
 			this.DialogPanel = this.CreateDialog();
 		}
 
+
 		////////////////
 
-		public void OnInitializeFinal( ISet<ModInfo> missingMods, ISet<ModInfo> unloadedMods ) {
+		public void OnInitializeFinal(
+					ISet<ModInfo> outdatedMods,
+					ISet<ModInfo> missingMods,
+					ISet<ModInfo> unloadedMods,
+					ISet<string> extraMods ) {
 			float currentTopPos = 0f;
 
 			void Append( UIElement elem, float height ) {
@@ -32,33 +36,26 @@ namespace AdventureModeSetup {
 
 			//
 
-			string welcomeMsg = "Welcome to Adventure Mode!";
-			if( missingMods.Count > 0 ) {
-				welcomeMsg += " To begin, the following mods will be installed:";
-			}
-
-			//
-
-			float listHeight = 96f;
-
-			UIPanel listPanel = missingMods.Count > 0
-				? this.CreateMissingModsListPanel( missingMods, listHeight, out this.MissingModsListElement )
-				: null;
-
-			//
-
-			IEnumerable<(UIElement elem, float height)> infoElems = this.CreateInfoElements(
-				missingMods,
-				unloadedMods
+			IEnumerable<(UIElement elem, float height)> welcomeElems = this.CreateWelcomeElements(
+				outdatedMods: outdatedMods,
+				missingMods: missingMods,
+				unloadedMods: unloadedMods,
+				extraMods: extraMods
 			);
 
 			//
 
-			Append( new UIText(welcomeMsg), 32f );
+			IEnumerable<(UIElement elem, float height)> infoElems = this.CreateInfoElements(
+				outdatedMods: outdatedMods,
+				missingMods: missingMods,
+				unloadedMods: unloadedMods,
+				extraMods: extraMods
+			);
 
-			if( listPanel != null ) {
-				Append( listPanel, listHeight );
-				currentTopPos += 8f;
+			//
+
+			foreach( (UIElement welcomeElem, float height) in welcomeElems ) {
+				Append( welcomeElem, height );
 			}
 
 			foreach( (UIElement infoElem, float height) in infoElems ) {

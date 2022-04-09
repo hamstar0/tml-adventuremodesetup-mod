@@ -50,9 +50,15 @@ namespace AdventureModeSetup {
 		internal void OpenInstallPromptMenu_If(
 					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
-					ISet<ModInfo> unloadedMods ) {
+					ISet<ModInfo> unloadedMods,
+					ISet<string> extraMods ) {
+			bool properGameModeLoadout = outdatedMods.Count == 0
+				&& missingMods.Count == 0
+				&& unloadedMods.Count == 0
+				&& extraMods.Count == 0;
+
 			if( !AMSConfig.Instance.ForceInstallPromptEachLoad ) {
-				if( outdatedMods.Count == 0 && missingMods.Count == 0 && unloadedMods.Count == 0 ) {
+				if( properGameModeLoadout ) {
 					return;
 				}
 			}
@@ -65,7 +71,12 @@ namespace AdventureModeSetup {
 			
 			Main.MenuUI.SetState( this.InstallPromptUI );
 
-			this.InstallPromptUI.OnInitializeFinal( missingMods, unloadedMods );
+			this.InstallPromptUI.OnInitializeFinal(
+				outdatedMods: outdatedMods,
+				missingMods: missingMods,
+				unloadedMods: unloadedMods,
+				extraMods: extraMods
+			);
 
 			//
 

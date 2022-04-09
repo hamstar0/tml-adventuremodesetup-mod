@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Terraria;
 using Terraria.ID;
@@ -20,10 +21,22 @@ namespace AdventureModeSetup {
 					IEnumerable<ModInfo> gameModeModEntries,
 					out ISet<ModInfo> outdatedMods,
 					out ISet<ModInfo> unloadedMods,
-					out ISet<ModInfo> nonexistentMods ) {
+					out ISet<ModInfo> nonexistentMods,
+					out ISet<string> extraMods ) {
 			outdatedMods = new HashSet<ModInfo>();
 			unloadedMods = new HashSet<ModInfo>();
 			nonexistentMods = new HashSet<ModInfo>();
+			extraMods = new HashSet<string>();
+
+			//
+
+			foreach( Mod mod in ModLoader.Mods ) {
+				if( !gameModeModEntries.Any(mi => mi.Name == mod.Name) ) {
+					extraMods.Add( mod.Name );
+				}
+			}
+
+			//
 
 			foreach( ModInfo modInfo in gameModeModEntries ) {
 				LoadStatus statusFlags = this.GetModStatusFlags( modInfo.Name );

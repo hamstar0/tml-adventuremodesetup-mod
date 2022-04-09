@@ -11,14 +11,16 @@ using Terraria.ModLoader;
 namespace AdventureModeSetup {
 	partial class UIInstallPromptDialog : UIState {
 		private UIPanel CreateDialog() {
+			float offsetY = 64f;	//220f;
+
 			var dialogPanel = new UIPanel();
-			dialogPanel.Top.Set( 220f, 0f );
+			dialogPanel.Top.Set( offsetY, 0f );
 			dialogPanel.HAlign = 0.5f;
 			//dialogPanel.MaxWidth.Set( 800f, 0f );
 			//dialogPanel.MinWidth.Set( 600f, 0f );
 			//dialogPanel.Width.Set( 0f, 0.8f );
 			dialogPanel.Width.Set( 800, 0f );
-			dialogPanel.Height.Set( -224f, 1f );
+			dialogPanel.Height.Set( -(offsetY + 4f), 1f );
 			this.Append( dialogPanel );
 
 			{

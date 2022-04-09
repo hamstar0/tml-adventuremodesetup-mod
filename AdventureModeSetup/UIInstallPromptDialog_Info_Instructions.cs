@@ -58,8 +58,10 @@ namespace AdventureModeSetup {
 		////////////////
 
 		private IEnumerable<(UIElement elem, float height)> CreateInfoElements(
+					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
-					ISet<ModInfo> unloadedMods ) {
+					ISet<ModInfo> unloadedMods,
+					ISet<string> extraMods ) {
 			var elements = new List<(UIElement, float)>();
 
 			//
