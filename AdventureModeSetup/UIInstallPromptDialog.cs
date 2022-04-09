@@ -39,11 +39,12 @@ namespace AdventureModeSetup {
 			//
 
 			float scale = (float)dest.Width / (float)tex.Width;
+			float texHeight = (float)tex.Height * scale;
 
 			dest.X += 4;
-			dest.Y += 32;
+			dest.Y += dest.Height - ((int)texHeight + 64);
 			dest.Width -= 8;
-			dest.Height = (int)((float)tex.Height * scale);
+			dest.Height = (int)texHeight;
 //AMSMod.Instance.Logger.Info( "scale: "+scale+ ", dest: "+dest );
 
 			//

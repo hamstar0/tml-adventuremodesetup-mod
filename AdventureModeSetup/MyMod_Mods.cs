@@ -30,9 +30,20 @@ namespace AdventureModeSetup {
 
 			//
 
+			var config = AMSConfig.Instance;
+
 			foreach( Mod mod in ModLoader.Mods ) {
 				if( !gameModeModEntries.Any(mi => mi.Name == mod.Name) ) {
-					extraMods.Add( mod.Name );
+					switch( mod.Name ) {
+					case "AdventureModeSetup":
+					case "ModLoader":
+						break;
+					default:
+						if( !config.NonAdventureModeModsAllowed.Contains(mod.Name) ) {
+							extraMods.Add( mod.Name );
+						}
+						break;
+					}
 				}
 			}
 

@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 namespace AdventureModeSetup {
 	partial class UIInstallPromptDialog : UIState {
 		private UIPanel CreateDialog() {
-			float offsetY = 64f;	//220f;
+			float offsetY = 32f;	//220f;
 
 			var dialogPanel = new UIPanel();
 			dialogPanel.Top.Set( offsetY, 0f );

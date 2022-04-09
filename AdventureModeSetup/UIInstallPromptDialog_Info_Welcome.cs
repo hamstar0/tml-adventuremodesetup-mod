@@ -31,7 +31,7 @@ namespace AdventureModeSetup {
 					listHeight: listHeight,
 					missingModsListElement: out this.MissingModsListElement
 				);
-				elemList.Add( (listPanel, listHeight) );
+				elemList.Add( (listPanel, listHeight + 4f) );
 			}
 
 			//
@@ -44,7 +44,7 @@ namespace AdventureModeSetup {
 					listHeight: listHeight,
 					listElement: out this.ExtraModsListElement
 				);
-				elemList.Add( (listPanel, listHeight) );
+				elemList.Add( (listPanel, listHeight + 4f) );
 			}
 
 			//
