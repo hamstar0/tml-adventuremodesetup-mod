@@ -33,7 +33,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			Texture2D tex = AMSMod.Instance.GetTexture( "logo" );
+			Texture2D tex = AMSMod.Instance.LogoTex;
 			var dest = this.DialogPanel.GetDimensions().ToRectangle();
 
 			//
