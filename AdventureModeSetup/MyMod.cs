@@ -146,19 +146,13 @@ namespace AdventureModeSetup {
 					On.Terraria.Main.orig_DrawMenu orig,
 					Main self,
 					GameTime gameTime ) {
-			orig.Invoke( self, gameTime );
+			//Main.spriteBatch.Begin();
+			this.DrawFullLogo_If( Main.spriteBatch );
+			//Main.spriteBatch.End();
 
 			//
 
-			bool isNotDisposed = !this.LogoTex.IsDisposed
-				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
-				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
-
-			if( isNotDisposed ) {
-				Main.spriteBatch.Begin();
-				this.DrawSubLogo_If( Main.spriteBatch );
-				Main.spriteBatch.End();
-			}
+			orig.Invoke( self, gameTime );
 
 			//
 

@@ -110,7 +110,7 @@ namespace AdventureModeSetup {
 			foreach( ModInfo modInfo in ModInfo.NeededMods ) {
 				dataJson += $",\n  \"{modInfo.Name}\"";
 			}
-			dataJson += $"\n]";
+			dataJson += $"\n]\n";
 
 			File.WriteAllText( modListJsonFullPath, dataJson );
 
