@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -14,37 +12,74 @@ namespace AdventureModeSetup {
 			if( !Main.gameMenu ) {
 				return;
 			}
+			if( Main.MenuUI.CurrentState == this.InstallPromptUI ) {
+				return;
+			}
 
 			//
 
+			var pos = new Vector2( Main.screenWidth / 2, 200 );
+
 			int b = (255 + (Main.tileColor.R * 2)) / 3;
 			Color dayColor = new Color( b, b, b, 255 );
+
+			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
+
+			var origin = new Vector2( this.LogoTex.Width / 2, this.LogoTex.Height / 2 );
+
+			float scale = (float)this.LogoScaleField.GetValue( Main.instance )
+				* 0.75f;
 
 			//
 
 			spriteBatch.Draw(
 				texture: this.LogoTex,
-				position: new Vector2( Main.screenWidth / 2, 168 ),
+				position: pos,
 				sourceRectangle: null,
 				color: dayColor,
-				rotation: (float)this.LogoRotationField.GetValue( Main.instance ),
-				origin: new Vector2( this.LogoTex.Width / 2, this.LogoTex.Height / 2 ),
-				scale: (float)this.LogoScaleField.GetValue( Main.instance ),
+				rotation: rot,
+				origin: origin,
+				scale: scale,
 				effects: SpriteEffects.None,
 				layerDepth: 0f
 			);
 
-			spriteBatch.Draw(
-				texture: this.LogoGlow1Tex,
-				position: new Vector2( Main.screenWidth / 2, 168 ),
-				sourceRectangle: null,
-				color: Color.White * Main.rand.NextFloat(),
-				rotation: (float)this.LogoRotationField.GetValue( Main.instance ),
-				origin: new Vector2( this.LogoTex.Width / 2, this.LogoTex.Height / 2 ),
-				scale: (float)this.LogoScaleField.GetValue( Main.instance ),
-				effects: SpriteEffects.None,
-				layerDepth: 0f
-			);
+			//
+
+			float glowPerc = 0.8f + (0.2f * Main.rand.NextFloat());
+			Color glowColor = Color.White * glowPerc;
+			
+			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
+				spriteBatch.Draw(
+					texture: this.LogoGlowIconTexs[i],
+					position: pos,
+					sourceRectangle: null,
+					color: glowColor,
+					rotation: rot,
+					origin: origin,
+					scale: scale,
+					effects: SpriteEffects.None,
+					layerDepth: 0f
+				);
+
+				glowColor = Color.Lerp( glowColor, dayColor, 0.5f );
+			}
+
+			//
+
+			for( int i=0; i<this.LogoGlowTexs.Length; i++ ) {
+				spriteBatch.Draw(
+					texture: this.LogoGlowTexs[i],
+					position: pos,
+					sourceRectangle: null,
+					color: Color.White * Main.rand.NextFloat(),
+					rotation: rot,
+					origin: origin,
+					scale: scale,
+					effects: SpriteEffects.None,
+					layerDepth: 0f
+				);
+			}
 
 			//
 

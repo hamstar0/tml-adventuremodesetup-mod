@@ -33,8 +33,8 @@ namespace AdventureModeSetup {
 		////////////////
 
 		public Texture2D LogoTex { get; private set; }
-		public Texture2D LogoGlow1Tex { get; private set; }
-		public Texture2D LogoGlow2Tex { get; private set; }
+		public Texture2D[] LogoGlowIconTexs { get; private set; } = new Texture2D[2];
+		public Texture2D[] LogoGlowTexs { get; private set; } = new Texture2D[6];
 
 
 
@@ -74,11 +74,15 @@ namespace AdventureModeSetup {
 			this.LogoTex = this.GetTexture( "logo" );
 			AMSMod.PremultiplyTexture( this.LogoTex );
 
-			this.LogoGlow1Tex = this.GetTexture( "logoglow1" );
-			AMSMod.PremultiplyTexture( this.LogoGlow1Tex );
-
-			this.LogoGlow2Tex = this.GetTexture( "logoglow2" );
-			AMSMod.PremultiplyTexture( this.LogoGlow2Tex );
+			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
+				this.LogoGlowIconTexs[i] = this.GetTexture( "logoglowicon"+(i+1) );
+				AMSMod.PremultiplyTexture( this.LogoGlowIconTexs[i] );
+			}
+			
+			for( int i=0; i<this.LogoGlowTexs.Length; i++ ) {
+				this.LogoGlowTexs[i] = this.GetTexture( "logoglow"+(i+1) );
+				AMSMod.PremultiplyTexture( this.LogoGlowTexs[i] );
+			}
 
 			//
 
