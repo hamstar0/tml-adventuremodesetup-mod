@@ -120,6 +120,14 @@ namespace AdventureModeSetup {
 			this.HasAddRecipeGroups = false;
 			this.HasPostAddRecipes = false;
 			this.HasPostSetupContent = false;
+
+			//
+
+			this.LoadLogo();
+		}
+
+		public override void Unload() {
+			this.UnloadLogo();
 		}
 
 

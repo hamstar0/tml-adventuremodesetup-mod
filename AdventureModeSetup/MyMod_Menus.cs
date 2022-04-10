@@ -63,7 +63,7 @@ namespace AdventureModeSetup {
 				}
 			}
 
-			if( Main.dedServ ) {
+			if( Main.netMode != NetmodeID.SinglePlayer || Main.dedServ ) {
 				return;
 			}
 

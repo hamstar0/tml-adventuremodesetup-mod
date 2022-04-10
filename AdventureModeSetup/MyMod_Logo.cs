@@ -14,21 +14,9 @@ namespace AdventureModeSetup {
 
 
 
-		////
-
-		private void DrawFullLogo_If( SpriteBatch spriteBatch ) {
-			if( !Main.gameMenu ) {
-				return;
-			}
-			if( Main.MenuUI.CurrentState == this.InstallPromptUI ) {
-				return;
-			}
-			if( ModLoader.GetMod("AdventureMode") == null ) {
-				return;
-			}
-
-			//
-
+		////////////////
+		
+		private void LoadLogo() {
 			bool isNotDisposed = !this.LogoTex.IsDisposed
 				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
 				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
@@ -48,6 +36,38 @@ namespace AdventureModeSetup {
 
 				Main.logoTexture = Main.projectileTexture[ProjectileID.ShadowBeamHostile];
 				Main.logo2Texture = Main.projectileTexture[ProjectileID.ShadowBeamHostile];
+			}
+
+		}
+
+		private void UnloadLogo() {
+			if( this.MyLogo1Override != null ) {
+				Main.logoTexture = this.MyLogo1Override;
+				Main.logo2Texture = this.MyLogo2Override;
+			}
+		}
+
+
+		////////////////
+
+		private void DrawFullLogo_If( SpriteBatch spriteBatch ) {
+			if( !Main.gameMenu ) {
+				return;
+			}
+			if( Main.MenuUI.CurrentState == this.InstallPromptUI ) {
+				return;
+			}
+			if( ModLoader.GetMod("AdventureMode") == null ) {
+				return;
+			}
+
+			//
+
+			bool isNotDisposed = !this.LogoTex.IsDisposed
+				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
+				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
+			if( !isNotDisposed ) {
+				return;
 			}
 
 			//
