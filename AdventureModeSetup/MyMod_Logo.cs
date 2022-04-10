@@ -18,17 +18,18 @@ namespace AdventureModeSetup {
 
 			//
 
-			var pos = new Vector2( Main.screenWidth / 2, 200 );
+			var pos = new Vector2( Main.screenWidth / 2, 190 );
 
 			int b = (255 + (Main.tileColor.R * 2)) / 3;
 			Color dayColor = new Color( b, b, b, 255 );
 
 			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
+			rot *= 0.5f;
 
 			var origin = new Vector2( this.LogoTex.Width / 2, this.LogoTex.Height / 2 );
 
-			float scale = (float)this.LogoScaleField.GetValue( Main.instance )
-				* 0.75f;
+			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
+				//* 0.75f;
 
 			//
 
