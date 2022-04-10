@@ -23,6 +23,11 @@ namespace AdventureModeSetup {
 
 			elemList.Add( (new UIText("Welcome to Adventure Mode!"), 32f) );
 
+			if( outdatedMods.Count > 0 ) {
+//AMSMod.Instance.Logger.Info( string.Join(", ", outdatedMods.Select(mi=>mi.Name)) );
+				elemList.Add( (new UIText($"Detected {outdatedMods.Count} outdated mods."), 24f) );
+			}
+
 			if( missingMods.Count > 0 ) {
 				elemList.Add( (new UIText("Tthe following mods will need to be installed:"), 20f) );
 

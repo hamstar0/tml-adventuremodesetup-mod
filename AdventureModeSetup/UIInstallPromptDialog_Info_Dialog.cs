@@ -67,7 +67,11 @@ namespace AdventureModeSetup {
 
 			//
 
-			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
+			Main.PlaySound( SoundID.MenuClose, -1, -1, 1, 1f, 0f );
+
+			//
+
+			mymod.ClearRecordedModStates();
 
 			//
 
@@ -82,9 +86,13 @@ namespace AdventureModeSetup {
 		}
 
 		private void CancelInstall() {
+			AMSMod.Instance.ClearRecordedModStates();
+
+			//
+
 			Main.menuMode = 0;
 
-			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
+			Main.PlaySound( SoundID.MenuClose, -1, -1, 1, 1f, 0f );
 		}
 	}
 }

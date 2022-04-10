@@ -175,5 +175,15 @@ namespace AdventureModeSetup {
 				}
 			}
 		}
+
+
+		////////////////
+
+		public void ClearRecordedModStates() {
+			this.OutdatedMods.Clear();
+			this.MissingMods.Clear();
+			this.UnloadedMods.Clear();
+			this.ExtraMods.Clear();
+		}
 	}
 }
