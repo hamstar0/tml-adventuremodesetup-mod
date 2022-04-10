@@ -60,6 +60,7 @@ namespace AdventureModeSetup {
 
 		private FieldInfo LogoRotationField;
 		private FieldInfo LogoScaleField;
+		private FieldInfo SpriteBatchBegunField;
 
 
 
@@ -72,17 +73,23 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.LogoTex = this.GetTexture( "logo" );
-			AMSMod.PremultiplyTexture( this.LogoTex );
+			this.LoadLogo();
 
-			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
-				this.LogoGlowIconTexs[i] = this.GetTexture( "logoglowicon"+(i+1) );
-				AMSMod.PremultiplyTexture( this.LogoGlowIconTexs[i] );
-			}
+			//
 			
-			for( int i=0; i<this.LogoGlowTexs.Length; i++ ) {
-				this.LogoGlowTexs[i] = this.GetTexture( "logoglow"+(i+1) );
-				AMSMod.PremultiplyTexture( this.LogoGlowTexs[i] );
+			var mostAccess = BindingFlags.Public |
+				BindingFlags.NonPublic |
+				BindingFlags.Instance |
+				BindingFlags.Static;
+			Type sbType = typeof(SpriteBatch);
+
+			this.SpriteBatchBegunField = sbType.GetField( "inBeginEndPair", mostAccess );
+
+			if( this.SpriteBatchBegunField == null ) {
+				this.SpriteBatchBegunField = sbType.GetField( "_beginCalled", mostAccess );
+			}
+			if( this.SpriteBatchBegunField == null ) {
+				this.SpriteBatchBegunField = sbType.GetField( "beginCalled", mostAccess );
 			}
 
 			//
@@ -90,16 +97,9 @@ namespace AdventureModeSetup {
 			this.InstallPromptUI = new UIInstallPromptDialog();
 
 			//
-			
-			this.LogoRotationField = typeof(Main).GetField(
-				"logoRotation",
-				BindingFlags.Instance | BindingFlags.NonPublic
-			);
-			
-			this.LogoScaleField = typeof(Main).GetField(
-				"logoScale",
-				BindingFlags.Instance | BindingFlags.NonPublic
-			);
+
+			this.LogoRotationField = typeof(Main).GetField( "logoRotation", mostAccess );
+			this.LogoScaleField = typeof(Main).GetField( "logoScale", mostAccess );
 
 			//
 
@@ -120,10 +120,6 @@ namespace AdventureModeSetup {
 			this.HasAddRecipeGroups = false;
 			this.HasPostAddRecipes = false;
 			this.HasPostSetupContent = false;
-
-			//
-
-			this.LoadLogo();
 		}
 
 		public override void Unload() {
@@ -160,7 +156,13 @@ namespace AdventureModeSetup {
 
 			//
 
-			orig.Invoke( self, gameTime );
+			try {
+				orig.Invoke( self, gameTime );
+			} catch {
+				if( (bool)this.SpriteBatchBegunField.GetValue(Main.spriteBatch) ) {
+					Main.spriteBatch.End();
+				}
+			}
 
 			//
 

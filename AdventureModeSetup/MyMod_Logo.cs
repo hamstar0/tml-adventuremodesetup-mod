@@ -9,26 +9,32 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		private Texture2D MyLogo1Override = null;
-		private Texture2D MyLogo2Override = null;
+		private Texture2D MyLogo1Backup = null;
+		private Texture2D MyLogo2Backup = null;
 
 
 
 		////////////////
 		
 		private void LoadLogo() {
-			bool isNotDisposed = !this.LogoTex.IsDisposed
-				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
-				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
-			if( !isNotDisposed ) {
-				return;
+			this.LogoTex = this.GetTexture( "logo" );
+			AMSMod.PremultiplyTexture( this.LogoTex );
+
+			for( int i = 0; i < this.LogoGlowIconTexs.Length; i++ ) {
+				this.LogoGlowIconTexs[i] = this.GetTexture( $"logoglowicon{(i + 1)}" );
+				AMSMod.PremultiplyTexture( this.LogoGlowIconTexs[i] );
+			}
+
+			for( int i = 0; i < this.LogoGlowTexs.Length; i++ ) {
+				this.LogoGlowTexs[i] = this.GetTexture( $"logoglow{(i + 1)}" );
+				AMSMod.PremultiplyTexture( this.LogoGlowTexs[i] );
 			}
 
 			//
 
-			if( this.MyLogo1Override == null ) {
-				this.MyLogo1Override = Main.logoTexture;
-				this.MyLogo2Override = Main.logo2Texture;
+			if( this.MyLogo1Backup == null ) {
+				this.MyLogo1Backup = Main.logoTexture;
+				this.MyLogo2Backup = Main.logo2Texture;
 
 				//
 
@@ -37,13 +43,12 @@ namespace AdventureModeSetup {
 				Main.logoTexture = Main.projectileTexture[ProjectileID.ShadowBeamHostile];
 				Main.logo2Texture = Main.projectileTexture[ProjectileID.ShadowBeamHostile];
 			}
-
 		}
 
 		private void UnloadLogo() {
-			if( this.MyLogo1Override != null ) {
-				Main.logoTexture = this.MyLogo1Override;
-				Main.logo2Texture = this.MyLogo2Override;
+			if( this.MyLogo1Backup != null ) {
+				Main.logoTexture = this.MyLogo1Backup;
+				Main.logo2Texture = this.MyLogo2Backup;
 			}
 		}
 
@@ -66,6 +71,7 @@ namespace AdventureModeSetup {
 			bool isNotDisposed = !this.LogoTex.IsDisposed
 				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
 				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
+
 			if( !isNotDisposed ) {
 				return;
 			}
@@ -87,7 +93,7 @@ namespace AdventureModeSetup {
 			
 		private void DrawMainLogo( SpriteBatch spriteBatch, Color baseColor, float baseRotation, float baseScale ) {
 			var pos = new Vector2( Main.screenWidth / 2, 100 );
-			var origin = new Vector2( this.MyLogo1Override.Width / 2, this.MyLogo1Override.Height / 2 );
+			var origin = new Vector2( this.MyLogo1Backup.Width / 2, this.MyLogo1Backup.Height / 2 );
 
 			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
 			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
@@ -111,7 +117,7 @@ namespace AdventureModeSetup {
 			//
 
 			spriteBatch.Draw(
-				texture: this.MyLogo1Override,
+				texture: this.MyLogo1Backup,
 				position: pos,
 				sourceRectangle: null,
 				color: color1,
@@ -122,7 +128,7 @@ namespace AdventureModeSetup {
 				layerDepth: 0f
 			);
 			spriteBatch.Draw(
-				texture: this.MyLogo2Override,
+				texture: this.MyLogo2Backup,
 				position: pos,
 				sourceRectangle: null,
 				color: color2,
