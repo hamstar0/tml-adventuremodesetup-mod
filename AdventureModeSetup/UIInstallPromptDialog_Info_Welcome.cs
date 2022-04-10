@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
@@ -24,7 +25,11 @@ namespace AdventureModeSetup {
 			elemList.Add( (new UIText("Welcome to Adventure Mode!"), 32f) );
 
 			if( outdatedMods.Count > 0 ) {
-//AMSMod.Instance.Logger.Info( string.Join(", ", outdatedMods.Select(mi=>mi.Name)) );
+				AMSMod.Instance.Logger.Info(
+					"Outdated mods detected: "
+					+string.Join( ", ", outdatedMods.Select(mi=>mi.Name) )
+				);
+				
 				elemList.Add( (new UIText($"Detected {outdatedMods.Count} outdated mods."), 24f) );
 			}
 

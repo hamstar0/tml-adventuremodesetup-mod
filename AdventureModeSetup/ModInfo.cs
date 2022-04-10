@@ -196,7 +196,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"MountedMagicMirrors",
 				"Mounted Magic Mirrors",
-				new Version( 1, 2, 2, 1 ),
+				new Version( 1, 2, 1, 1 ),
 				ModTypeFlags.Mechanic | ModTypeFlags.Content
 			),
 			new ModInfo(
