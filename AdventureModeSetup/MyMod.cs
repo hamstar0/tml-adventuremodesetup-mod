@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -149,9 +150,15 @@ namespace AdventureModeSetup {
 
 			//
 
-			Main.spriteBatch.Begin();
-			this.DrawSubLogo_If( Main.spriteBatch );
-			Main.spriteBatch.End();
+			bool isNotDisposed = !this.LogoTex.IsDisposed
+				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
+				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
+
+			if( isNotDisposed ) {
+				Main.spriteBatch.Begin();
+				this.DrawSubLogo_If( Main.spriteBatch );
+				Main.spriteBatch.End();
+			}
 
 			//
 
