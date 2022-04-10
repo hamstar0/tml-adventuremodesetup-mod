@@ -67,17 +67,18 @@ namespace AdventureModeSetup {
 
 			//
 
-			//ModLoader.Reload();
-			MethodInfo reloadMethodInfo = typeof(ModLoader)
-				.GetMethod("Reload", BindingFlags.NonPublic | BindingFlags.Static );
-			
-			reloadMethodInfo.Invoke( null, new object[0] );
-
-			//Main.menuMode = 10007;	// mod browser
+			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
 
 			//
 
-			Main.PlaySound( SoundID.MenuOpen, -1, -1, 1, 1f, 0f );
+			////ModLoader.Reload();
+			//MethodInfo reloadMethodInfo = typeof(ModLoader)
+			//	.GetMethod("Reload", BindingFlags.NonPublic | BindingFlags.Static );
+			//
+			//reloadMethodInfo.Invoke( null, new object[0] );
+
+			Main.menuMode = 10006;	// reload mods
+			//Main.menuMode = 10007;	// mod browser
 		}
 
 		private void CancelInstall() {
