@@ -11,7 +11,7 @@ namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
 		public enum LoadStatus {
 			Loaded = 1,
-			Unloaded = 2,
+			Deactivated = 2,
 			MissingInternally = 4,
 			MissingExternally = 8,
 			Outdated = 16
@@ -57,14 +57,14 @@ namespace AdventureModeSetup {
 
 			statusFlags |= ModLoader.Mods.Any( m => m.Name == modName )
 				? LoadStatus.Loaded  //"Success.";
-				: LoadStatus.Unloaded;
+				: LoadStatus.Deactivated;
 
 			//
 
 			Mod currMod = ModLoader.GetMod( modName );
 
 			if( currMod != null ) {
-				ModInfo currModInfo = ModInfo.NeededMods.FirstOrDefault( mi => mi.Name == modName );
+				ModInfo currModInfo = ModInfo.AdventureModeMods.FirstOrDefault( mi => mi.Name == modName );
 
 				if( currMod.Version < currModInfo.MinVersion ) {
 					statusFlags |= LoadStatus.Outdated;

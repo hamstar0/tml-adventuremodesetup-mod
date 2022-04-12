@@ -20,11 +20,11 @@ namespace AdventureModeSetup {
 		private void GetEachModStatus(
 					IEnumerable<ModInfo> gameModeModEntries,
 					out ISet<ModInfo> outdatedMods,
-					out ISet<ModInfo> unloadedMods,
+					out ISet<ModInfo> deactivatedMods,
 					out ISet<ModInfo> nonexistentMods,
 					out ISet<string> extraMods ) {
 			outdatedMods = new HashSet<ModInfo>();
-			unloadedMods = new HashSet<ModInfo>();
+			deactivatedMods = new HashSet<ModInfo>();
 			nonexistentMods = new HashSet<ModInfo>();
 			extraMods = new HashSet<string>();
 
@@ -70,8 +70,10 @@ namespace AdventureModeSetup {
 				if( (statusFlags & LoadStatus.Outdated) == LoadStatus.Outdated ) {
 					outdatedMods.Add( modInfo );
 				}
-				if( (statusFlags & LoadStatus.Unloaded) == LoadStatus.Unloaded ) {
-					unloadedMods.Add( modInfo );
+				if( (statusFlags & LoadStatus.Deactivated) == LoadStatus.Deactivated ) {
+					if( (modInfo.InfoFlags & ModInfo.ModTypeFlags.Optional) == 0 ) {
+						deactivatedMods.Add( modInfo );
+					}
 				}
 				if( (statusFlags & LoadStatus.MissingExternally) == LoadStatus.MissingExternally ) {
 					nonexistentMods.Add( modInfo );
@@ -83,7 +85,7 @@ namespace AdventureModeSetup {
 		////////////////
 
 		internal void UnpackMods_Current() {
-			foreach( ModInfo modInfo in ModInfo.NeededMods ) {
+			foreach( ModInfo modInfo in ModInfo.AdventureModeMods ) {
 				bool forceUnpack = this.OutdatedMods.Contains( modInfo );
 
 				this.UnpackMod_If( modInfo.Name, forceUnpack );
@@ -107,7 +109,7 @@ namespace AdventureModeSetup {
 			//string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
 			//string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
 			string dataJson = $"[\n  \"{this.Name}\"";
-			foreach( ModInfo modInfo in ModInfo.NeededMods ) {
+			foreach( ModInfo modInfo in ModInfo.AdventureModeMods ) {
 				dataJson += $",\n  \"{modInfo.Name}\"";
 			}
 			dataJson += $"\n]\n";
@@ -116,7 +118,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.EnableModsInternally( ModInfo.NeededMods );
+			this.EnableModsInternally( ModInfo.AdventureModeMods );
 		}
 
 		private void EnableModsInternally( ModInfo[] gameModeModInfos ) {

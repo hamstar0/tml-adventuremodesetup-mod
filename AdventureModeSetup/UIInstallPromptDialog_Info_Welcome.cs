@@ -12,7 +12,7 @@ namespace AdventureModeSetup {
 		private IEnumerable<(UIElement elem, float height)> CreateWelcomeElements(
 					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
-					ISet<ModInfo> unloadedMods,
+					ISet<ModInfo> deactivatedMods,
 					ISet<string> extraMods ) {
 			var elemList = new List<(UIElement, float)>();
 

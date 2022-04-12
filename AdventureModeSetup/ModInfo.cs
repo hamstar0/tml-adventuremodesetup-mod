@@ -8,21 +8,22 @@ namespace AdventureModeSetup {
 			GameMode = 1,
 			GameRules = 2,
 			Info = 4,
-			Mechanic = 8,
+			Mechanics = 8,
 			Content = 16,
 			ModResource = 32,
+			Optional = 64,
 		}
 
 
 
 		////////////////
 
-		public static readonly ModInfo[] NeededMods = new ModInfo[] {
+		public static readonly ModInfo[] AdventureModeMods = new ModInfo[] {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 42, 0 ),
-				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanic
+				new Version( 0, 43, 0 ),
+				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -41,7 +42,7 @@ namespace AdventureModeSetup {
 				"BossReigns",
 				"Boss Reigns",
 				new Version( 1, 3, 1, 2 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"Bullwhip",
@@ -52,44 +53,44 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 0, 0 ),
+				new Version( 1, 0, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
 				"CursedBrambles",
 				"Cursed Brambles",
 				new Version( 1, 3, 1, 2 ),
-				ModTypeFlags.Content | ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.Content | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Enraged",
 				"Enraged!",
 				new Version( 0, 13, 1, 1 ),
-				ModTypeFlags.Mechanic
+				ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"Ergophobia",
 				"Ergophobia",
 				new Version( 1, 14, 0, 2 ),
-				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Content | ModTypeFlags.Mechanic
+				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
 				new Version( 2, 1, 0 ),
-				ModTypeFlags.Content | ModTypeFlags.Mechanic
+				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"Grappletech",
 				"Grappletech",
 				new Version( 2, 2, 1 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"GreenHell",
 				"Green Hell",
 				new Version( 0, 7, 4 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.Content
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 			),
 			new ModInfo(
 				"HUDElementsLib",
@@ -101,13 +102,13 @@ namespace AdventureModeSetup {
 				"LockedAbilities",
 				"Locked Abilities",
 				new Version( 1, 3, 1, 1 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.Content | ModTypeFlags.ModResource
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"LostExpeditions",
 				"Lost Expeditions",
 				new Version( 1, 1, 0 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.Content | ModTypeFlags.ModResource
+				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Messages",
@@ -124,7 +125,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ModLibsCore",
 				"Mod Libs - Core",
-				new Version( 1, 5, 3 ),
+				new Version( 1, 5, 4 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -161,7 +162,7 @@ namespace AdventureModeSetup {
 				"ModLibsNPCDialogue",
 				"Mod Libs - NPC Dialogue",
 				new Version( 1, 0, 1 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"ModLibsTiles",
@@ -197,58 +198,58 @@ namespace AdventureModeSetup {
 				"MountedMagicMirrors",
 				"Mounted Magic Mirrors",
 				new Version( 1, 2, 1, 1 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.Content
+				ModTypeFlags.Mechanics | ModTypeFlags.Content
 			),
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
 				new Version( 2, 2, 2 ),
-				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.Content
+				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Nihilism",
 				"Nihilism",
 				new Version( 4, 0, 0 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Objectives",
 				"Objectives",
 				new Version( 0, 8, 0, 1 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Orbs",
 				"Orbs",
 				new Version( 1, 7, 1 ),
-				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.Content
+				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
 				new Version( 2, 0, 0, 1 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanic | ModTypeFlags.Content
+				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PotLuck",
 				"Pot Luck",
 				new Version( 2, 1, 0 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PowerfulMagic",
 				"Powerful Magic",
 				new Version( 1, 11, 0 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.ModResource
+				ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"QuickRope",
 				"Quick Rope",
 				new Version( 0, 3, 0 ),
-				ModTypeFlags.Mechanic
+				ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"ReadableBooks",
@@ -260,13 +261,13 @@ namespace AdventureModeSetup {
 				"RuinedItems",
 				"Ruined Items",
 				new Version( 2, 11, 2, 1 ),
-				ModTypeFlags.GameRules | ModTypeFlags.Mechanic
+				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 0, 1 ),
-				ModTypeFlags.Mechanic | ModTypeFlags.Content | ModTypeFlags.ModResource
+				new Version( 3, 0, 2 ),
+				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
 			//	"SpiritWalking",
@@ -283,8 +284,8 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Surroundings",
 				"Surroundings",
-				new Version( 1, 2, 0 ),
-				ModTypeFlags.Content
+				new Version( 1, 2, 0, 1 ),
+				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"TerrainRemixer",
@@ -307,8 +308,8 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 2, 6, 4 ),
-				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanic | ModTypeFlags.Content
+				new Version( 1, 2, 7 ),
+				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
 		};

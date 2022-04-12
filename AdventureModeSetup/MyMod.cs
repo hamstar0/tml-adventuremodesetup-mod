@@ -46,7 +46,7 @@ namespace AdventureModeSetup {
 		////
 
 		private ISet<ModInfo> OutdatedMods = new HashSet<ModInfo>();
-		private ISet<ModInfo> UnloadedMods = new HashSet<ModInfo>();
+		private ISet<ModInfo> DeactivatedMods = new HashSet<ModInfo>();
 		private ISet<ModInfo> MissingMods = new HashSet<ModInfo>();
 		private ISet<string> ExtraMods = new HashSet<string>();
 
@@ -104,9 +104,9 @@ namespace AdventureModeSetup {
 			//
 
 			this.GetEachModStatus(
-				gameModeModEntries: ModInfo.NeededMods,
+				gameModeModEntries: ModInfo.AdventureModeMods,
 				outdatedMods: out this.OutdatedMods,
-				unloadedMods: out this.UnloadedMods,
+				deactivatedMods: out this.DeactivatedMods,
 				nonexistentMods: out this.MissingMods,
 				extraMods: out this.ExtraMods
 			);
@@ -173,7 +173,7 @@ namespace AdventureModeSetup {
 					this.OpenInstallPromptMenu_If(
 						outdatedMods: this.OutdatedMods,
 						missingMods: this.MissingMods,
-						unloadedMods: this.UnloadedMods,
+						deactivatedMods: this.DeactivatedMods,
 						extraMods: this.ExtraMods
 					);
 				}
@@ -186,7 +186,7 @@ namespace AdventureModeSetup {
 		public void ClearRecordedModStates() {
 			this.OutdatedMods.Clear();
 			this.MissingMods.Clear();
-			this.UnloadedMods.Clear();
+			this.DeactivatedMods.Clear();
 			this.ExtraMods.Clear();
 		}
 	}

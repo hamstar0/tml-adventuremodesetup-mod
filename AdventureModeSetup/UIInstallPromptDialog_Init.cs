@@ -21,7 +21,7 @@ namespace AdventureModeSetup {
 		public void OnInitializeFinal(
 					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
-					ISet<ModInfo> unloadedMods,
+					ISet<ModInfo> deactivatedMods,
 					ISet<string> extraMods ) {
 			float currentTopPos = 0f;
 
@@ -39,7 +39,7 @@ namespace AdventureModeSetup {
 			IEnumerable<(UIElement elem, float height)> welcomeElems = this.CreateWelcomeElements(
 				outdatedMods: outdatedMods,
 				missingMods: missingMods,
-				unloadedMods: unloadedMods,
+				deactivatedMods: deactivatedMods,
 				extraMods: extraMods
 			);
 
@@ -48,7 +48,7 @@ namespace AdventureModeSetup {
 			IEnumerable<(UIElement elem, float height)> infoElems = this.CreateInfoElements(
 				outdatedMods: outdatedMods,
 				missingMods: missingMods,
-				unloadedMods: unloadedMods,
+				deactivatedMods: deactivatedMods,
 				extraMods: extraMods
 			);
 

@@ -60,10 +60,10 @@ namespace AdventureModeSetup {
 		private IEnumerable<(UIElement elem, float height)> CreateInfoElements(
 					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
-					ISet<ModInfo> unloadedMods,
+					ISet<ModInfo> deactivatedMods,
 					ISet<string> extraMods ) {
 			var elements = new List<(UIElement, float)>();
-
+			
 			//
 
 			void StoreElementsFromTexts( IEnumerable<string> mylines ) {
@@ -74,8 +74,8 @@ namespace AdventureModeSetup {
 
 			//
 
-			//int activeMods = ModInfo.NeededMods.Length - unloadedMods.Count;
-			string text1 = $"{ModInfo.NeededMods.Length} mods will need to be enabled to play this game mode. Any"
+			//int activeMods = ModInfo.NeededMods.Length - deactivatedMods.Count;
+			string text1 = $"{ModInfo.AdventureModeMods.Length} mods will need to be enabled to play this game mode. Any"
 				+$" existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}' mod pack (see"
 				+$" the Mods -> Mod Packs menu).";
 			string text2 = $"Finally, reload your mods (via. Mods menu), and you're ready to play. Be sure to"
