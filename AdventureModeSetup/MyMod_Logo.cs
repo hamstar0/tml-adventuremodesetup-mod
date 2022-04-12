@@ -62,17 +62,20 @@ namespace AdventureModeSetup {
 			if( Main.MenuUI.CurrentState == this.InstallPromptUI ) {
 				return;
 			}
+			if( Main.menuMode == 10006 ) {	// safeguard?
+				return;
+			}
 			if( ModLoader.GetMod("AdventureMode") == null ) {
 				return;
 			}
 
 			//
 
-			bool isNotDisposed = !this.LogoTex.IsDisposed
-				&& !this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
-				&& !this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
+			bool isDisposed = this.LogoTex.IsDisposed
+				|| this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
+				|| this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
 
-			if( !isNotDisposed ) {
+			if( isDisposed ) {
 				return;
 			}
 

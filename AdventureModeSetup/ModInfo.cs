@@ -125,7 +125,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ModLibsCore",
 				"Mod Libs - Core",
-				new Version( 1, 5, 4 ),
+				new Version( 1, 5, 4, 1 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -266,7 +266,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 0, 2 ),
+				new Version( 3, 1, 0 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 2, 7 ),
+				new Version( 1, 2, 8 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)

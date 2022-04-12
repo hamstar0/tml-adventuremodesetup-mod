@@ -60,7 +60,6 @@ namespace AdventureModeSetup {
 
 		private FieldInfo LogoRotationField;
 		private FieldInfo LogoScaleField;
-		private FieldInfo SpriteBatchBegunField;
 
 
 
@@ -82,15 +81,6 @@ namespace AdventureModeSetup {
 				BindingFlags.Instance |
 				BindingFlags.Static;
 			Type sbType = typeof(SpriteBatch);
-
-			this.SpriteBatchBegunField = sbType.GetField( "inBeginEndPair", mostAccess );
-
-			if( this.SpriteBatchBegunField == null ) {
-				this.SpriteBatchBegunField = sbType.GetField( "_beginCalled", mostAccess );
-			}
-			if( this.SpriteBatchBegunField == null ) {
-				this.SpriteBatchBegunField = sbType.GetField( "beginCalled", mostAccess );
-			}
 
 			//
 
@@ -159,7 +149,24 @@ namespace AdventureModeSetup {
 			try {
 				orig.Invoke( self, gameTime );
 			} catch {
-				if( (bool)this.SpriteBatchBegunField.GetValue(Main.spriteBatch) ) {
+				var mostAccess = BindingFlags.Public |
+					BindingFlags.NonPublic |
+					BindingFlags.Instance |
+					BindingFlags.Static;
+
+				Type sbType = typeof( SpriteBatch );
+
+				FieldInfo sbBegunField = sbType.GetField( "inBeginEndPair", mostAccess );
+				if( sbBegunField == null ) {
+					sbBegunField = sbType.GetField( "_beginCalled", mostAccess );
+				}
+				if( sbBegunField == null ) {
+					sbBegunField = sbType.GetField( "beginCalled", mostAccess );
+				}
+
+				//
+
+				if( (bool)sbBegunField.GetValue(Main.spriteBatch) ) {
 					Main.spriteBatch.End();
 				}
 			}
