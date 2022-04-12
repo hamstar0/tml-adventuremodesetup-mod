@@ -29,7 +29,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 20, 2 ),
+				new Version( 0, 20, 2, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
