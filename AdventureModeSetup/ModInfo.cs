@@ -53,7 +53,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 0, 1 ),
+				new Version( 1, 1, 0 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 1, 0 ),
+				new Version( 2, 1, 0, 1 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
