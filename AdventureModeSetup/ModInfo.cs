@@ -53,7 +53,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 1, 0 ),
+				new Version( 1, 1, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
