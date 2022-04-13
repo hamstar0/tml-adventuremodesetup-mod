@@ -23,5 +23,7 @@ namespace AdventureModeSetup {
 		public List<string> NonAdventureModeModsAllowed { get; set; } = new List<string>() {
 			"CheatSheet"
 		};
+
+		public List<string> SkipLoadingMods { get; set; } = new List<string>() {};
 	}
 }

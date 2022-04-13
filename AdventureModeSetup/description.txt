@@ -7,6 +7,8 @@ Welcome to Adventure Mode! This is a "metroidvania" game mode for Terraria with 
 - Ammo is more expensive; use wisely.
 - Talk to the Guide and NPCs for directions.
 
+Note: This is Adventure Mode's setup mod. See the configs for options to whitelist 3rd party mods, ignore specific missing mods, etc.
+
 
 
 This game mode uses the following mods:

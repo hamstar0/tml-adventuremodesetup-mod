@@ -118,15 +118,24 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.EnableModsInternally( ModInfo.AdventureModeMods );
+			var config = AMSConfig.Instance;
+
+			IEnumerable<ModInfo> toEnableMods = ModInfo.AdventureModeMods
+				.Where( mi => !config.SkipLoadingMods.Contains(mi.Name) );
+
+			//
+
+			this.EnableModsInternally( toEnableMods );
 		}
 
-		private void EnableModsInternally( ModInfo[] gameModeModInfos ) {
+		private void EnableModsInternally( IEnumerable<ModInfo> gameModeModInfos ) {
 			FieldInfo enabledModsFieldInfo = typeof( ModLoader )
 				.GetField( "_enabledMods", BindingFlags.NonPublic | BindingFlags.Static );
 
 			object rawInternalEnabledModsData = enabledModsFieldInfo.GetValue( null );
 			HashSet<string> internalEnabledModsData = rawInternalEnabledModsData as HashSet<string>;
+
+			//
 
 			foreach( ModInfo modInfo in gameModeModInfos ) {
 				internalEnabledModsData.Add( modInfo.Name );
