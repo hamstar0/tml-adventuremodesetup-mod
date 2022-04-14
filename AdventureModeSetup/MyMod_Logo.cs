@@ -60,6 +60,7 @@ namespace AdventureModeSetup {
 				&& Main.MenuUI.CurrentState != this.InstallPromptUI
 				&& Main.menuMode != 10006	// safeguard against mod reload 'menu' crash?
 				&& ModLoader.GetMod("AdventureMode") != null;
+				//&& Main.MenuUI.CurrentState != null;
 		}
 
 
@@ -89,7 +90,11 @@ namespace AdventureModeSetup {
 			this.DrawMainLogo( spriteBatch, dayColor, rot, scale );
 
 			if( this.CanDrawSubLogo() ) {
-				this.DrawSubLogo( spriteBatch, dayColor, rot, scale );
+				if( !this.IsTimerRunning() ) {
+					this.DrawSubLogo( spriteBatch, dayColor, rot, scale );
+				}
+			} else {
+				this.RunAfterTimer( 2, () => { } );
 			}
 
 			//

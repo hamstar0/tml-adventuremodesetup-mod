@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -129,39 +128,6 @@ namespace AdventureModeSetup {
 
 		public override void AddRecipeGroups() {
 			this.HasAddRecipeGroups = true;
-		}
-
-
-		////////////////
-
-		 private bool _HasPrompted = false;
-
-		private void Main_DrawMenu_Inject(
-					On.Terraria.Main.orig_DrawMenu orig,
-					Main self,
-					GameTime gameTime ) {
-			this.DrawFullLogo_If( Main.spriteBatch );
-
-			//
-			
-			orig.Invoke( self, gameTime );
-
-			//
-
-			if( this.HasPostAddRecipes && this.HasPostSetupContent && this.HasAddRecipeGroups ) {
-				if( !this._HasPrompted ) {
-					this._HasPrompted = true;
-
-					this.RunAfterTimer( 2, () => {
-						this.OpenInstallPromptMenu_If(
-							outdatedMods: this.OutdatedMods,
-							missingMods: this.MissingMods,
-							deactivatedMods: this.DeactivatedMods,
-							extraMods: this.ExtraMods
-						);
-					} );
-				}
-			}
 		}
 
 
