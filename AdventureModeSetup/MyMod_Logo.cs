@@ -55,22 +55,36 @@ namespace AdventureModeSetup {
 
 		////////////////
 
+		private bool CanDrawSubLogo() {
+			return Main.gameMenu 
+				&& Main.MenuUI.CurrentState != this.InstallPromptUI
+				&& Main.menuMode != 10006	// safeguard against mod reload 'menu'?
+				&& ModLoader.GetMod("AdventureMode") != null;
+		}
+
+
+		////////////////
+
 		private void DrawFullLogo_If( SpriteBatch spriteBatch ) {
-			if( !Main.gameMenu ) {
-				return;
-			}
-			if( Main.MenuUI.CurrentState == this.InstallPromptUI ) {
-				return;
-			}
-			if( Main.menuMode == 10006 ) {	// safeguard?
-				return;
-			}
-			if( ModLoader.GetMod("AdventureMode") == null ) {
-				return;
-			}
+			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
+			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
+
+			int dayShade = ( 255 + ( Main.tileColor.R * 2 ) ) / 3;
+			Color dayColor = new Color( dayShade, dayShade, dayShade, 255 );
 
 			//
 
+			this.DrawMainLogo( spriteBatch, dayColor, rot, scale );
+
+			if( this.CanDrawSubLogo() ) {
+				this.DrawSubLogo_If( spriteBatch, dayColor, rot, scale );
+			}
+		}
+
+
+		////////////////
+
+		private void DrawSubLogo_If( SpriteBatch spriteBatch, Color baseColor, float baseRotation, float baseScale ) {
 			bool isDisposed = this.LogoTex.IsDisposed
 				|| this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
 				|| this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
@@ -81,16 +95,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
-			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
-
-			int dayShade = ( 255 + ( Main.tileColor.R * 2 ) ) / 3;
-			Color dayColor = new Color( dayShade, dayShade, dayShade, 255 );
-
-			//
-
-			this.DrawMainLogo( spriteBatch, dayColor, rot, scale );
-			this.DrawSubLogo( spriteBatch, dayColor, rot, scale );
+			this.DrawSubLogo( spriteBatch, baseColor, baseRotation, baseScale );
 		}
 
 			
