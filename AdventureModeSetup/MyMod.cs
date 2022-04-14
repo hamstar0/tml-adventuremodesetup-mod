@@ -25,7 +25,7 @@ namespace AdventureModeSetup {
 
 		////
 
-		private AdventureModeLogo Logo;
+		internal AdventureModeLogo Logo;
 
 		////
 

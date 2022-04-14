@@ -33,7 +33,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			Texture2D tex = AMSMod.Instance.LogoTex;
+			Texture2D tex = AMSMod.Instance.Logo.LogoTex;
 			if( tex == null ) {
 				return;
 			}
