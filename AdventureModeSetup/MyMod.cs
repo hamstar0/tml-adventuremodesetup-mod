@@ -10,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		public static AMSMod Instance => ModContent.GetInstance<AMSMod>();
+		public static AMSMod Instance;
 
 
 
@@ -50,10 +50,14 @@ namespace AdventureModeSetup {
 		////////////////
 
 		public override void Load() {
-			this.LoadTimer();
+			AMSMod.Instance = this;
 
 			//
 
+			this.LoadTimer();
+
+			//
+			
 			if( Main.netMode == NetmodeID.Server || Main.dedServ ) {
 				return;
 			}
@@ -113,6 +117,10 @@ namespace AdventureModeSetup {
 			this.LogoTex = null;
 			this.LogoGlowIconTexs = null;
 			this.LogoGlowTexs = null;
+
+			//
+
+			AMSMod.Instance = null;
 		}
 
 

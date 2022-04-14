@@ -8,12 +8,6 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		 private bool _HasPrompted = false;
-
-
-
-		////////////////
-
 		private void Main_DrawMenu_Inject(
 					On.Terraria.Main.orig_DrawMenu orig,
 					Main self,
@@ -27,19 +21,38 @@ namespace AdventureModeSetup {
 			//
 
 			if( this.HasPostAddRecipes && this.HasPostSetupContent && this.HasAddRecipeGroups ) {
-				if( !this._HasPrompted ) {
-					if( Main.menuMode == 888 && Main.MenuUI.CurrentState == this.InstallPromptUI ) {
-						this._HasPrompted = true;
-					}
+				this.AttemptOpenInstallMenu_If();
+			}
+		}
 
-					if( !this._HasPrompted ) {
-						this.OpenInstallPromptMenu_If(
-							outdatedMods: this.OutdatedMods,
-							missingMods: this.MissingMods,
-							deactivatedMods: this.DeactivatedMods,
-							extraMods: this.ExtraMods
-						);
-					}
+
+		////////////////
+
+		 private bool _HasPrompted = false;
+
+		private void AttemptOpenInstallMenu_If() {
+			if( this._HasPrompted ) {
+				return;
+			}
+
+			//
+
+			if( Main.menuMode == 888 && Main.MenuUI.CurrentState == this.InstallPromptUI ) {
+				this._HasPrompted = true;
+			}
+
+			//
+
+			if( !this._HasPrompted ) {
+				bool hasOpened = this.OpenInstallPromptMenu_If(
+					outdatedMods: this.OutdatedMods,
+					missingMods: this.MissingMods,
+					deactivatedMods: this.DeactivatedMods,
+					extraMods: this.ExtraMods
+				);
+
+				if( !hasOpened ) {
+					this._HasPrompted = true;
 				}
 			}
 		}

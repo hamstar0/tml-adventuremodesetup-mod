@@ -47,26 +47,24 @@ namespace AdventureModeSetup {
 
 
 
-		internal void OpenInstallPromptMenu_If(
+		internal bool OpenInstallPromptMenu_If(
 					ISet<ModInfo> outdatedMods,
 					ISet<ModInfo> missingMods,
 					ISet<ModInfo> deactivatedMods,
 					ISet<string> extraMods ) {
-			bool properGameModeLoadout = outdatedMods.Count == 0
-				&& missingMods.Count == 0
-				&& deactivatedMods.Count == 0
-				&& extraMods.Count == 0;
-
 			if( !AMSConfig.Instance.ForceInstallPromptEachLoad ) {
+				bool properGameModeLoadout = outdatedMods.Count == 0
+					&& missingMods.Count == 0
+					&& deactivatedMods.Count == 0
+					&& extraMods.Count == 0;
+
 				if( properGameModeLoadout ) {
-this.Logger.Warn( "INSTALLER OPEN FAIL 1 " );
-					return;
+					return false;
 				}
 			}
 
 			if( Main.netMode != NetmodeID.SinglePlayer || Main.dedServ ) {
-this.Logger.Warn( "INSTALLER OPEN FAIL 2 " );
-				return;
+				return false;
 			}
 
 			//
@@ -84,6 +82,10 @@ this.Logger.Warn( "INSTALLER OPEN FAIL 2 " );
 
 			//Main.menuMode = Math.Abs( Math.Abs(this.GetHashCode()) + 20000 );
 			Main.menuMode = 888;
+
+			//
+
+			return true;
 		}
 	}
 }

@@ -57,10 +57,11 @@ namespace AdventureModeSetup {
 
 		public bool CanDrawSubLogo() {
 			return Main.gameMenu
-				&& Main.MenuUI.CurrentState != this.InstallPromptUI
+				//&& Main.MenuUI.CurrentState != this.InstallPromptUI
 				&& Main.menuMode != 10006	// safeguard against mod reload 'menu' crash?
-				&& ModLoader.GetMod("AdventureMode") != null;
-				//&& Main.MenuUI.CurrentState != null;
+				&& ModLoader.GetMod("AdventureMode") != null
+				&& Main.MenuUI.CurrentState == null
+				&& AMSMod.Instance != null;
 		}
 
 
