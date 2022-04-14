@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ModLoader;
 
 
 namespace AdventureModeSetup {
@@ -74,10 +76,21 @@ namespace AdventureModeSetup {
 
 			//
 
-			//int activeMods = ModInfo.NeededMods.Length - deactivatedMods.Count;
-			string text1 = $"{ModInfo.AdventureModeMods.Length} mods will need to be enabled to play this game mode. Any"
-				+$" existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}' mod pack (see"
-				+$" the Mods -> Mod Packs menu).";
+			int totalMods = ModInfo.AdventureModeMods.Length;
+			int totalReqMods = ModInfo.AdventureModeMods
+				.Count( mi => (mi.InfoFlags & ModInfo.ModTypeFlags.Optional) == 0 );
+			int activeMods = ModInfo.AdventureModeMods
+				.Count( mi => ModLoader.GetMod(mi.Name) != null );
+
+			string text1A = activeMods > 0
+				? $" ({activeMods} are already)"
+				: "";
+
+			//
+
+			string text1 = $"{totalReqMods} mods (of {totalMods} total) will need to be enabled to play this game"
+				+$" mode{text1A}. Any existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}'"
+				+$" mod pack (see the Mods -> Mod Packs menu).";
 			string text2 = $"Finally, reload your mods (via. Mods menu), and you're ready to play. Be sure to"
 				+$" check if any mod updates exist in the Mod Browser menu, if you want. Happy trails!";
 
