@@ -1,11 +1,9 @@
 using System;
-using System.Reflection;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
-using Terraria.ModLoader;
 
 
 namespace AdventureModeSetup {
@@ -81,7 +79,9 @@ namespace AdventureModeSetup {
 			//
 			//reloadMethodInfo.Invoke( null, new object[0] );
 
-			Main.menuMode = 10006;	// reload mods
+			//
+
+			Main.menuMode = 10006;  // reload mods 'menu'
 			//Main.menuMode = 10007;	// mod browser
 		}
 

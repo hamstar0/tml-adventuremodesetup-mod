@@ -15,21 +15,6 @@ namespace AdventureModeSetup {
 
 
 
-		////////////////
-		public static void PremultiplyTexture( Texture2D texture ) {
-			Color[] buffer = new Color[texture.Width * texture.Height];
-
-			texture.GetData( buffer );
-
-			for( int i = 0; i < buffer.Length; i++ ) {
-				buffer[i] = Color.FromNonPremultiplied( buffer[i].R, buffer[i].G, buffer[i].B, buffer[i].A );
-			}
-
-			texture.SetData( buffer );
-		}
-
-
-
 
 		////////////////
 
@@ -66,12 +51,16 @@ namespace AdventureModeSetup {
 		////////////////
 
 		public override void Load() {
-			if( Main.dedServ ) {
+			this.LoadTimer();
+
+			//
+
+			if( Main.netMode == NetmodeID.Server || Main.dedServ ) {
 				return;
 			}
 
 			//
-
+			
 			this.LoadLogo();
 
 			//
@@ -112,8 +101,19 @@ namespace AdventureModeSetup {
 			this.HasPostSetupContent = false;
 		}
 
+
 		public override void Unload() {
 			this.UnloadLogo();
+
+			//
+
+			this.UnloadTimer();
+
+			//
+
+			this.LogoTex = null;
+			this.LogoGlowIconTexs = null;
+			this.LogoGlowTexs = null;
 		}
 
 
@@ -134,42 +134,17 @@ namespace AdventureModeSetup {
 
 		////////////////
 
-		private bool _HasPrompted = false;
+		 private bool _HasPrompted = false;
 
 		private void Main_DrawMenu_Inject(
 					On.Terraria.Main.orig_DrawMenu orig,
 					Main self,
 					GameTime gameTime ) {
-			//Main.spriteBatch.Begin();
 			this.DrawFullLogo_If( Main.spriteBatch );
-			//Main.spriteBatch.End();
 
 			//
-
-			try {
-				orig.Invoke( self, gameTime );
-			} catch {
-				var mostAccess = BindingFlags.Public |
-					BindingFlags.NonPublic |
-					BindingFlags.Instance |
-					BindingFlags.Static;
-
-				Type sbType = typeof( SpriteBatch );
-
-				FieldInfo sbBegunField = sbType.GetField( "inBeginEndPair", mostAccess );
-				if( sbBegunField == null ) {
-					sbBegunField = sbType.GetField( "_beginCalled", mostAccess );
-				}
-				if( sbBegunField == null ) {
-					sbBegunField = sbType.GetField( "beginCalled", mostAccess );
-				}
-
-				//
-
-				if( (bool)sbBegunField.GetValue(Main.spriteBatch) ) {
-					Main.spriteBatch.End();
-				}
-			}
+			
+			orig.Invoke( self, gameTime );
 
 			//
 
@@ -177,12 +152,14 @@ namespace AdventureModeSetup {
 				if( !this._HasPrompted ) {
 					this._HasPrompted = true;
 
-					this.OpenInstallPromptMenu_If(
-						outdatedMods: this.OutdatedMods,
-						missingMods: this.MissingMods,
-						deactivatedMods: this.DeactivatedMods,
-						extraMods: this.ExtraMods
-					);
+					this.RunAfterTimer( 2, () => {
+						this.OpenInstallPromptMenu_If(
+							outdatedMods: this.OutdatedMods,
+							missingMods: this.MissingMods,
+							deactivatedMods: this.DeactivatedMods,
+							extraMods: this.ExtraMods
+						);
+					} );
 				}
 			}
 		}

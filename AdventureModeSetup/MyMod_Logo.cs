@@ -9,8 +9,8 @@ using Terraria.ModLoader;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		private Texture2D MyLogo1Backup = null;
-		private Texture2D MyLogo2Backup = null;
+		private Texture2D MainLogo1Backup = null;
+		private Texture2D MainLogo2Backup = null;
 
 
 
@@ -32,9 +32,9 @@ namespace AdventureModeSetup {
 
 			//
 
-			if( this.MyLogo1Backup == null ) {
-				this.MyLogo1Backup = Main.logoTexture;
-				this.MyLogo2Backup = Main.logo2Texture;
+			if( this.MainLogo1Backup == null ) {
+				this.MainLogo1Backup = Main.logoTexture;
+				this.MainLogo2Backup = Main.logo2Texture;
 
 				//
 
@@ -46,30 +46,42 @@ namespace AdventureModeSetup {
 		}
 
 		private void UnloadLogo() {
-			if( this.MyLogo1Backup != null ) {
-				Main.logoTexture = this.MyLogo1Backup;
-				Main.logo2Texture = this.MyLogo2Backup;
+			if( this.MainLogo1Backup != null ) {
+				Main.logoTexture = this.MainLogo1Backup;
+				Main.logo2Texture = this.MainLogo2Backup;
 			}
 		}
 
 
 		////////////////
 
-		private bool CanDrawSubLogo() {
-			return Main.gameMenu 
+		public bool CanDrawSubLogo() {
+			return Main.gameMenu
 				&& Main.MenuUI.CurrentState != this.InstallPromptUI
-				&& Main.menuMode != 10006	// safeguard against mod reload 'menu'?
+				&& Main.menuMode != 10006	// safeguard against mod reload 'menu' crash?
 				&& ModLoader.GetMod("AdventureMode") != null;
 		}
 
 
 		////////////////
 
-		private void DrawFullLogo_If( SpriteBatch spriteBatch ) {
+		private bool DrawFullLogo_If( SpriteBatch spriteBatch ) {
+			bool isDisposed = (this.LogoTex?.IsDisposed ?? true)
+				|| (this.MainLogo1Backup?.IsDisposed ?? true)
+				|| (this.MainLogo2Backup?.IsDisposed ?? true)
+				|| this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
+				|| this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
+
+			if( isDisposed ) {
+				return false;
+			}
+
+			//
+
 			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
 			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
 
-			int dayShade = ( 255 + ( Main.tileColor.R * 2 ) ) / 3;
+			int dayShade = (255 + (Main.tileColor.R * 2)) / 3;
 			Color dayColor = new Color( dayShade, dayShade, dayShade, 255 );
 
 			//
@@ -77,34 +89,20 @@ namespace AdventureModeSetup {
 			this.DrawMainLogo( spriteBatch, dayColor, rot, scale );
 
 			if( this.CanDrawSubLogo() ) {
-				this.DrawSubLogo_If( spriteBatch, dayColor, rot, scale );
+				this.DrawSubLogo( spriteBatch, dayColor, rot, scale );
 			}
+
+			//
+
+			return true;
 		}
 
 
 		////////////////
 
-		private void DrawSubLogo_If( SpriteBatch spriteBatch, Color baseColor, float baseRotation, float baseScale ) {
-			bool isDisposed = this.LogoTex.IsDisposed
-				|| this.LogoGlowIconTexs.Any( t => t?.IsDisposed ?? true )
-				|| this.LogoGlowTexs.Any( t => t?.IsDisposed ?? true );
-
-			if( isDisposed ) {
-				return;
-			}
-
-			//
-
-			this.DrawSubLogo( spriteBatch, baseColor, baseRotation, baseScale );
-		}
-
-			
 		private void DrawMainLogo( SpriteBatch spriteBatch, Color baseColor, float baseRotation, float baseScale ) {
 			var pos = new Vector2( Main.screenWidth / 2, 100 );
-			var origin = new Vector2( this.MyLogo1Backup.Width / 2, this.MyLogo1Backup.Height / 2 );
-
-			float rot = (float)this.LogoRotationField.GetValue( Main.instance );
-			float scale = (float)this.LogoScaleField.GetValue( Main.instance );
+			var origin = new Vector2( this.MainLogo1Backup.Width / 2, this.MainLogo1Backup.Height / 2 );
 
 			float logoAShade = (float)Main.LogoA / 255f;
 			float logoBShade = (float)Main.LogoB / 255f;
@@ -125,7 +123,7 @@ namespace AdventureModeSetup {
 			//
 
 			spriteBatch.Draw(
-				texture: this.MyLogo1Backup,
+				texture: this.MainLogo1Backup,
 				position: pos,
 				sourceRectangle: null,
 				color: color1,
@@ -136,7 +134,7 @@ namespace AdventureModeSetup {
 				layerDepth: 0f
 			);
 			spriteBatch.Draw(
-				texture: this.MyLogo2Backup,
+				texture: this.MainLogo2Backup,
 				position: pos,
 				sourceRectangle: null,
 				color: color2,

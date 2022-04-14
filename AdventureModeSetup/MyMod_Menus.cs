@@ -59,11 +59,13 @@ namespace AdventureModeSetup {
 
 			if( !AMSConfig.Instance.ForceInstallPromptEachLoad ) {
 				if( properGameModeLoadout ) {
+this.Logger.Warn( "INSTALLER OPEN FAIL 1 " );
 					return;
 				}
 			}
 
 			if( Main.netMode != NetmodeID.SinglePlayer || Main.dedServ ) {
+this.Logger.Warn( "INSTALLER OPEN FAIL 2 " );
 				return;
 			}
 
