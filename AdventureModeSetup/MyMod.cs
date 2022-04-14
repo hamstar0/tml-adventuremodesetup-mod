@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,14 +9,6 @@ namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
 		public static AMSMod Instance;
 
-
-
-
-		////////////////
-
-		public Texture2D LogoTex { get; private set; }
-		public Texture2D[] LogoGlowIconTexs { get; private set; } = new Texture2D[2];
-		public Texture2D[] LogoGlowTexs { get; private set; } = new Texture2D[6];
 
 
 
@@ -35,15 +24,14 @@ namespace AdventureModeSetup {
 		private ISet<string> ExtraMods = new HashSet<string>();
 
 		////
-		
-		private bool HasPostAddRecipes = false;
-		private bool HasPostSetupContent = false;
-		private bool HasAddRecipeGroups = false;
+
+		private AdventureModeLogo Logo;
 
 		////
 
-		private FieldInfo LogoRotationField;
-		private FieldInfo LogoScaleField;
+		private bool HasPostAddRecipes = false;
+		private bool HasPostSetupContent = false;
+		private bool HasAddRecipeGroups = false;
 
 
 
@@ -63,25 +51,12 @@ namespace AdventureModeSetup {
 			}
 
 			//
-			
-			this.LoadLogo();
+
+			this.Logo = new AdventureModeLogo();
 
 			//
 			
-			var mostAccess = BindingFlags.Public |
-				BindingFlags.NonPublic |
-				BindingFlags.Instance |
-				BindingFlags.Static;
-			Type sbType = typeof(SpriteBatch);
-
-			//
-
 			this.InstallPromptUI = new UIInstallPromptDialog();
-
-			//
-
-			this.LogoRotationField = typeof(Main).GetField( "logoRotation", mostAccess );
-			this.LogoScaleField = typeof(Main).GetField( "logoScale", mostAccess );
 
 			//
 
@@ -106,7 +81,7 @@ namespace AdventureModeSetup {
 
 
 		public override void Unload() {
-			this.UnloadLogo();
+			this.Logo.Unload();
 
 			//
 
@@ -114,11 +89,7 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.LogoTex = null;
-			this.LogoGlowIconTexs = null;
-			this.LogoGlowTexs = null;
-
-			//
+			this.Logo = null;
 
 			AMSMod.Instance = null;
 		}
