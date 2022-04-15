@@ -11,7 +11,7 @@ using Terraria.Utilities;
 
 namespace AdventureModeSetup {
 	public partial class AMSMod : Mod {
-		public const string BackupFileBaseName = "Pre AM Mods List Backup";
+		public const string BackupFileBaseName = "PreAMModsListBackup";
 
 
 
@@ -106,6 +106,10 @@ namespace AdventureModeSetup {
 
 			//
 
+			Directory.CreateDirectory( modsFolder );
+
+			//
+
 			//string[] modInfosArr = gameModeModInfos.Select( m => m.Name ).ToArray();
 			//string dataJson = JsonConvert.SerializeObject( modInfosArr, new JsonSerializerSettings() );
 			string dataJson = $"[\n  \"{this.Name}\"";
@@ -156,6 +160,10 @@ namespace AdventureModeSetup {
 			string modPacksFolder = modsFolder
 				+ div
 				+ "ModPacks";
+
+			//
+
+			Directory.CreateDirectory( modPacksFolder );
 
 			//
 
