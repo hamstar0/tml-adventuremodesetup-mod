@@ -29,7 +29,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 20, 2, 2 ),
+				new Version( 0, 20, 3 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -47,7 +47,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 6, 0 ),
+				new Version( 1, 6, 0, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -101,7 +101,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"LockedAbilities",
 				"Locked Abilities",
-				new Version( 1, 3, 1, 1 ),
+				new Version( 1, 3, 1, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
