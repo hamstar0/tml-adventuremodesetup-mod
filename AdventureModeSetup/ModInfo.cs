@@ -47,7 +47,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 5, 1 ),
+				new Version( 1, 6, 0 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -266,7 +266,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 1, 0, 2 ),
+				new Version( 3, 1, 0, 3 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
@@ -296,7 +296,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TheMadRanger",
 				"The Mad Ranger",
-				new Version( 1, 9, 6 ),
+				new Version( 1, 10, 0 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 2, 9 ),
+				new Version( 1, 2, 9, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)

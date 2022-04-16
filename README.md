@@ -92,6 +92,7 @@ Testers:
 - PeasantUnit
 - Planterrer
 - Retro
+- Sendoreaper
 - Waasephi
 
 https://forums.terraria.org/index.php?threads/adventure-mode.85140/
