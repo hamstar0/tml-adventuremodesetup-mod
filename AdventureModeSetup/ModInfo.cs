@@ -53,7 +53,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 1, 1 ),
+				new Version( 1, 1, 1, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 2, 9, 1 ),
+				new Version( 1, 2, 9, 2 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
