@@ -12,7 +12,7 @@ namespace AdventureModeSetup {
 					On.Terraria.Main.orig_DrawMenu orig,
 					Main self,
 					GameTime gameTime ) {
-			this.Logo.DrawFullLogo_If( Main.spriteBatch );
+			this.Logo?.DrawFullLogo_If( Main.spriteBatch );
 
 			//
 			

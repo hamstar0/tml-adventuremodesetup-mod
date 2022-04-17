@@ -47,7 +47,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 6, 1 ),
+				new Version( 1, 6, 2 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 2 ),
+				new Version( 2, 2, 3 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
