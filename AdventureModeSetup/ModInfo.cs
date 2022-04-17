@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 45, 2 ),
+				new Version( 0, 47, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 20, 3 ),
+				new Version( 0, 20, 3, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -47,7 +47,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 6, 0, 1 ),
+				new Version( 1, 6, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(

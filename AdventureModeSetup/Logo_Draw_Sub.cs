@@ -32,15 +32,16 @@ namespace AdventureModeSetup {
 
 			//
 
-			float glowPerc = 0.8f + (0.2f * Main.rand.NextFloat());
-			Color glowColor = Color.White * glowPerc;
+			float glowPerc = 0.75f + (0.25f * Main.rand.NextFloat());
+			Color glowColorHi = Color.White;
+			Color glowColorLo = Color.White * glowPerc;
 			
 			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
 				spriteBatch.Draw(
 					texture: this.LogoGlowIconTexs[i],
 					position: pos,
 					sourceRectangle: null,
-					color: glowColor,
+					color: glowColorHi,
 					rotation: rot,
 					origin: origin,
 					scale: scale,
@@ -48,7 +49,7 @@ namespace AdventureModeSetup {
 					layerDepth: 0f
 				);
 
-				glowColor = Color.Lerp( glowColor, baseColor, 0.5f );
+				glowColorHi = glowColorLo;	//Color.Lerp( glowColorHi, glowColorLo, 0.5f );
 			}
 
 			//
