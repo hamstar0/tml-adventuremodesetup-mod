@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 47, 0 ),
+				new Version( 0, 49, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -47,13 +47,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 6, 2 ),
+				new Version( 1, 6, 3 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 1, 1, 1 ),
+				new Version( 1, 1, 1, 2 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -266,7 +266,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 1, 0, 3 ),
+				new Version( 3, 2, 0 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 2, 9, 2 ),
+				new Version( 1, 3, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
