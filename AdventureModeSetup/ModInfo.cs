@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 3, 0 ),
+				new Version( 1, 3, 0, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
