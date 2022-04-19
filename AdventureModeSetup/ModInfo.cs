@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 1, 0, 1 ),
+				new Version( 2, 1, 0, 2 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 3 ),
+				new Version( 2, 2, 4 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -266,7 +266,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 2, 0 ),
+				new Version( 3, 3, 0 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 3, 0, 1 ),
+				new Version( 1, 3, 0, 2 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
