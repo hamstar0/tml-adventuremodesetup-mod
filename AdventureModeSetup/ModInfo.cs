@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 49, 1 ),
+				new Version( 0, 51, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 20, 3, 1 ),
+				new Version( 0, 21, 0 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -41,7 +41,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"BossReigns",
 				"Boss Reigns",
-				new Version( 1, 3, 1, 2 ),
+				new Version( 1, 4, 0 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -53,7 +53,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBones",
 				"Cursed Bones",
-				new Version( 1, 1, 1, 2 ),
+				new Version( 1, 1, 1, 3 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -71,7 +71,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Ergophobia",
 				"Ergophobia",
-				new Version( 1, 14, 0, 2 ),
+				new Version( 1, 15, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -83,13 +83,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Grappletech",
 				"Grappletech",
-				new Version( 2, 2, 1 ),
+				new Version( 2, 2, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"GreenHell",
 				"Green Hell",
-				new Version( 0, 7, 4 ),
+				new Version( 0, 7, 5 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -107,7 +107,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"LostExpeditions",
 				"Lost Expeditions",
-				new Version( 1, 1, 1 ),
+				new Version( 1, 1, 2 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -222,14 +222,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 7, 1 ),
+				new Version( 1, 8, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 2, 0, 0, 1 ),
+				new Version( 2, 0, 0, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -242,7 +242,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"PowerfulMagic",
 				"Powerful Magic",
-				new Version( 1, 11, 0 ),
+				new Version( 1, 11, 0, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 3, 0, 2 ),
+				new Version( 1, 3, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
