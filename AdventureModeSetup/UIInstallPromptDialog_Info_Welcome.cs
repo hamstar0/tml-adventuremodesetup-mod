@@ -14,6 +14,7 @@ namespace AdventureModeSetup {
 					ISet<ModInfo> missingMods,
 					ISet<ModInfo> deactivatedMods,
 					ISet<string> extraMods ) {
+			UIPanel listPanel;
 			var elemList = new List<(UIElement, float)>();
 
 			//
@@ -22,10 +23,20 @@ namespace AdventureModeSetup {
 
 			//
 
-			elemList.Add( (new UIText("Welcome to Adventure Mode!"), 32f) );
+			var mymod = AMSMod.Instance;
+
+			string version = $" v{Math.Max( mymod.Version.Major, 1 )}";
+
+			if( mymod.Version.Major < 0 || mymod.Version.Build != 0 ) {
+				version += $" (beta)";
+			}
+
+			elemList.Add( (new UIText($"Welcome to Adventure Mode{version}", 1f, true), 40f) );
+
+			//
 
 			if( outdatedMods.Count > 0 ) {
-				AMSMod.Instance.Logger.Info(
+			AMSMod.Instance.Logger.Info(
 					"Outdated mods detected: "
 					+string.Join( ", ", outdatedMods.Select(mi=>mi.Name) )
 				);
@@ -36,7 +47,7 @@ namespace AdventureModeSetup {
 			if( missingMods.Count > 0 ) {
 				elemList.Add( (new UIText("Tthe following mods will need to be installed:"), 20f) );
 
-				UIPanel listPanel = this.CreateMissingModsListPanel(
+				listPanel = this.CreateMissingModsListPanel(
 					missingMods: missingMods,
 					listHeight: listHeight,
 					missingModsListElement: out this.MissingModsListElement
@@ -49,7 +60,7 @@ namespace AdventureModeSetup {
 			if( extraMods.Count > 0 ) {
 				elemList.Add( (new UIText("The following mods will be disabled (after backup):"), 20f) );
 
-				UIPanel listPanel = this.CreateExtraModsListPanel(
+				listPanel = this.CreateExtraModsListPanel(
 					extraMods: extraMods,
 					listHeight: listHeight,
 					listElement: out this.ExtraModsListElement

@@ -91,8 +91,8 @@ namespace AdventureModeSetup {
 			string text1 = $"{totalReqMods} mods (of {totalMods} total) will need to be enabled to play this game"
 				+$" mode{text1A}. Any existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}'"
 				+$" mod pack (see the Mods -> Mod Packs menu).";
-			string text2 = $"Finally, reload your mods (via. Mods menu), and you're ready to play. Be sure to"
-				+$" check if any mod updates exist in the Mod Browser menu, if you want. Happy trails!";
+			string text2 = $"Be sure to check if any mod updates exist in the Mod Browser menu, if you want."
+				+$" Happy trails!";
 
 			//
 

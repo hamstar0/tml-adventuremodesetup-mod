@@ -20,7 +20,7 @@ namespace AdventureModeSetup {
 
 			string fullFilePath = AMSMod.GetModFullFilePath( modName, out string modFileNameExt );
 
-			if( !File.Exists(fullFilePath) ) {
+			if( File.Exists(fullFilePath) ) {
 				if( !forceUnpack ) {
 					return false;
 				}
@@ -42,7 +42,7 @@ namespace AdventureModeSetup {
 
 			File.WriteAllBytes( fullFilePath, modFileData );
 
-			if( !File.Exists( fullFilePath ) ) {
+			if( !File.Exists(fullFilePath) ) {
 				string err = $"Could not write mod file {modName}.";
 
 				this.Logger.Error( err );

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
+using AdventureModeSetup.Libraries.Classes.UI.Elements;
 
 
 namespace AdventureModeSetup {
@@ -11,8 +12,20 @@ namespace AdventureModeSetup {
 			this.RemoveAllChildren();
 
 			//
-
+			
 			this.DialogPanel = this.CreateDialog();
+
+			//
+
+			var infoLink = new UIWebUrlBasic(
+				label: "Homepage",
+				url: "https://forums.terraria.org/index.php?threads/adventure-mode.85140/",
+				hoverUrl: true,
+				scale:	1.25f
+			);
+			infoLink.Left.Set( -104f, 1f );
+			infoLink.Top.Set( 8f, 0f );
+			this.DialogPanel.Append( infoLink );
 		}
 
 
