@@ -24,7 +24,7 @@ namespace AdventureModeSetup {
 				scale:	1.25f
 			);
 			infoLink.Left.Set( -104f, 1f );
-			infoLink.Top.Set( 8f, 0f );
+			infoLink.Top.Set( 4f, 0f );
 			this.DialogPanel.Append( infoLink );
 		}
 

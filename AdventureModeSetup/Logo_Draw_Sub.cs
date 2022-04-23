@@ -32,9 +32,9 @@ namespace AdventureModeSetup {
 
 			//
 
-			float glowPerc = 0.75f + (0.25f * Main.rand.NextFloat());
+			float pulse = (float)Main.mouseTextColor / 255f;
 			Color glowColorHi = Color.White;
-			Color glowColorLo = Color.White * glowPerc;
+			Color glowColorLo = Color.White * pulse * pulse * 0.75f;
 			
 			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
 				spriteBatch.Draw(
