@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 51, 0 ),
+				new Version( 0, 52, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 21, 0, 1 ),
+				new Version( 0, 21, 0, 2 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -65,7 +65,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Enraged",
 				"Enraged!",
-				new Version( 0, 13, 1, 1 ),
+				new Version( 0, 14, 0 ),
 				ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -83,7 +83,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Grappletech",
 				"Grappletech",
-				new Version( 2, 2, 2 ),
+				new Version( 2, 2, 2, 1 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 4 ),
+				new Version( 2, 2, 5, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -222,14 +222,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 8, 0 ),
+				new Version( 1, 8, 0, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 2, 0, 0, 2 ),
+				new Version( 2, 0, 0, 3 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -284,7 +284,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Surroundings",
 				"Surroundings",
-				new Version( 1, 2, 0, 1 ),
+				new Version( 1, 2, 0, 2 ),
 				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
