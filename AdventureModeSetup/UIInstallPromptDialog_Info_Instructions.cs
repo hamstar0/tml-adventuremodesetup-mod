@@ -76,14 +76,15 @@ namespace AdventureModeSetup {
 
 			//
 
+			IEnumerable<ModInfo> reqMods = ModInfo.AdventureModeMods
+				.Where( mi => (mi.InfoFlags & ModInfo.ModTypeFlags.Optional) == 0 );
 			int totalMods = ModInfo.AdventureModeMods.Length;
-			int totalReqMods = ModInfo.AdventureModeMods
-				.Count( mi => (mi.InfoFlags & ModInfo.ModTypeFlags.Optional) == 0 );
-			int activeMods = ModInfo.AdventureModeMods
+			int totalReqMods = reqMods.Count();
+			int activeRequiredMods = reqMods
 				.Count( mi => ModLoader.GetMod(mi.Name) != null );
 
-			string text1A = activeMods > 0
-				? $" ({activeMods} are already)"
+			string text1A = activeRequiredMods > 0
+				? $" ({activeRequiredMods} are already)"
 				: "";
 
 			//

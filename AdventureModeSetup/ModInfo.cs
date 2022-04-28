@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 52, 0 ),
+				new Version( 0, 52, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -284,7 +284,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Surroundings",
 				"Surroundings",
-				new Version( 1, 2, 0, 2 ),
+				new Version( 1, 2, 0, 3 ),
 				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
