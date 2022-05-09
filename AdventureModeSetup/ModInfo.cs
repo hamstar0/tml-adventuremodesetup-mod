@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TrashHistory",
 				"Trash History",
-				new Version( 1, 0, 0 ),
+				new Version( 1, 0, 0, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(

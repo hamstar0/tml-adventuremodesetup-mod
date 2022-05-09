@@ -36,7 +36,7 @@ namespace AdventureModeSetup {
 			//
 
 			if( outdatedMods.Count > 0 ) {
-			AMSMod.Instance.Logger.Info(
+				AMSMod.Instance.Logger.Info(
 					"Outdated mods detected: "
 					+string.Join( ", ", outdatedMods.Select(mi=>mi.Name) )
 				);

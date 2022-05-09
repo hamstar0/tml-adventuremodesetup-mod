@@ -83,6 +83,20 @@ namespace AdventureModeSetup {
 			int activeRequiredMods = reqMods
 				.Count( mi => ModLoader.GetMod(mi.Name) != null );
 
+			//
+
+			IEnumerable<ModInfo> disabledReqMods = reqMods
+				.Where( mi => ModLoader.GetMod(mi.Name) == null );
+			
+			if( disabledReqMods.Count() > 0 ) {
+				AMSMod.Instance.Logger.Info(
+					"Disabled mods detected: "
+					+string.Join( ", ", disabledReqMods.Select(mi=>mi.Name) )
+				);
+			}
+
+			//
+
 			string text1A = activeRequiredMods > 0
 				? $" ({activeRequiredMods} are already)"
 				: "";
