@@ -57,6 +57,7 @@ This game mode uses the following mods:
 - Terrain Remixer
 - The Mad Ranger
 - The Trickster
+- Trash History
 - WorldGates
 
 
@@ -65,6 +66,7 @@ Credits:
 Mods:
 - jopojelly, et al (Boss Checklist)
 - Chik3r (Quick Ropes)
+- Agrair (Trash History IL code prototype)
 
 Sprites:
 - Arcri
@@ -90,7 +92,7 @@ Testers:
 - Hayden
 - koolaidlemonade
 - PeasantUnit
-- Planterrer
+- Planterror
 - Retro
 - Sendoreaper
 - Waasephi

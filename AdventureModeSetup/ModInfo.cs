@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 52, 1 ),
+				new Version( 0, 53, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 21, 0, 2 ),
+				new Version( 0, 21, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 1, 0, 2 ),
+				new Version( 2, 1, 0, 4 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -95,7 +95,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"HUDElementsLib",
 				"HUD Elements Lib",
-				new Version( 4, 2, 0 ),
+				new Version( 4, 3, 1 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -107,13 +107,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"LostExpeditions",
 				"Lost Expeditions",
-				new Version( 1, 1, 2 ),
+				new Version( 1, 1, 2, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Messages",
 				"Messages",
-				new Version( 1, 3, 0 ),
+				new Version( 1, 4, 0 ),
 				ModTypeFlags.Info | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -125,7 +125,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ModLibsCore",
 				"Mod Libs - Core",
-				new Version( 1, 5, 4, 1 ),
+				new Version( 1, 5, 4, 2 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -137,7 +137,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ModLibsGeneral",
 				"Mod Libs - General",
-				new Version( 1, 7, 1 ),
+				new Version( 1, 7, 2 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 5, 1 ),
+				new Version( 2, 2, 5, 3 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -216,20 +216,20 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Objectives",
 				"Objectives",
-				new Version( 0, 8, 0, 1 ),
+				new Version( 0, 9, 0 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 8, 0, 1 ),
+				new Version( 1, 9, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 2, 0, 0, 3 ),
+				new Version( 3, 0, 0 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -242,14 +242,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"PowerfulMagic",
 				"Powerful Magic",
-				new Version( 1, 11, 0, 1 ),
+				new Version( 1, 11, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"QuickRope",
 				"Quick Rope",
 				new Version( 0, 3, 0 ),
-				ModTypeFlags.Mechanics
+				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"ReadableBooks",
@@ -278,8 +278,8 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SteampunkArsenal",
 				"Steampunk Arsenal",
-				new Version( 0, 18, 0, 2 ),
-				ModTypeFlags.Content
+				new Version( 0, 18, 0, 3 ),
+				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"Surroundings",
@@ -296,14 +296,20 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TheMadRanger",
 				"The Mad Ranger",
-				new Version( 1, 10, 0 ),
+				new Version( 1, 11, 0 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
 				"TheTrickster",
 				"The Trickster",
-				new Version( 1, 7, 5, 6 ),
+				new Version( 1, 7, 5, 7 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Content
+			),
+			new ModInfo(
+				"TrashHistory",
+				"Trash History",
+				new Version( 1, 0, 0 ),
+				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"WorldGates",

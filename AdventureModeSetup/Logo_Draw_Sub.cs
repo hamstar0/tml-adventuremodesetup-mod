@@ -33,23 +33,23 @@ namespace AdventureModeSetup {
 			//
 
 			float pulse = (float)Main.mouseTextColor / 255f;
-			Color glowColorHi = Color.White;
-			Color glowColorLo = Color.White * pulse * pulse * 0.75f;
+			Color[] glowColors = new Color[] {
+				Color.White * pulse * pulse,
+				Color.White * pulse * pulse * 0.75f
+			};
 			
-			for( int i=0; i<this.LogoGlowIconTexs.Length; i++ ) {
+			for( int i=this.LogoGlowIconTexs.Length - 1; i>=0; i-- ) {
 				spriteBatch.Draw(
 					texture: this.LogoGlowIconTexs[i],
 					position: pos,
 					sourceRectangle: null,
-					color: glowColorHi,
+					color: glowColors[i],
 					rotation: rot,
 					origin: origin,
 					scale: scale,
 					effects: SpriteEffects.None,
 					layerDepth: 0f
 				);
-
-				glowColorHi = glowColorLo;	//Color.Lerp( glowColorHi, glowColorLo, 0.5f );
 			}
 
 			//
