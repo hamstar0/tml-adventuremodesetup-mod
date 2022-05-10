@@ -222,7 +222,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 9, 0 ),
+				new Version( 1, 9, 0, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
