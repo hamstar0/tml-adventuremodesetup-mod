@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 53, 0 ),
+				new Version( 0, 53, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 21, 1 ),
+				new Version( 0, 21, 1, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -41,7 +41,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"BossReigns",
 				"Boss Reigns",
-				new Version( 1, 4, 0 ),
+				new Version( 1, 4, 0, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -113,7 +113,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Messages",
 				"Messages",
-				new Version( 1, 4, 0 ),
+				new Version( 1, 4, 0, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -216,7 +216,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Objectives",
 				"Objectives",
-				new Version( 0, 9, 0 ),
+				new Version( 0, 9, 0, 1 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -229,7 +229,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 3, 0, 0 ),
+				new Version( 3, 0, 0, 1 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TrashHistory",
 				"Trash History",
-				new Version( 1, 0, 0, 1 ),
+				new Version( 1, 1, 0 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(
