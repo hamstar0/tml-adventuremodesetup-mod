@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 53, 1 ),
+				new Version( 0, 54, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -47,7 +47,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
-				new Version( 1, 6, 3 ),
+				new Version( 1, 6, 3, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 1, 0, 4 ),
+				new Version( 2, 1, 0, 5 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -95,7 +95,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"HUDElementsLib",
 				"HUD Elements Lib",
-				new Version( 4, 3, 1 ),
+				new Version( 5, 0, 0 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -113,7 +113,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Messages",
 				"Messages",
-				new Version( 1, 4, 0, 1 ),
+				new Version( 1, 4, 0, 2 ),
 				ModTypeFlags.Info | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 5, 3 ),
+				new Version( 2, 2, 6, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -216,13 +216,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Objectives",
 				"Objectives",
-				new Version( 0, 9, 0, 1 ),
+				new Version( 0, 9, 0, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 9, 0, 1 ),
+				new Version( 1, 9, 0, 3 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -260,13 +260,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"RuinedItems",
 				"Ruined Items",
-				new Version( 2, 11, 2, 1 ),
+				new Version( 2, 11, 3 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"SoulBarriers",
 				"Soul Barriers",
-				new Version( 3, 3, 0 ),
+				new Version( 3, 3, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			//new ModInfo(
@@ -278,13 +278,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"SteampunkArsenal",
 				"Steampunk Arsenal",
-				new Version( 0, 18, 0, 3 ),
+				new Version( 0, 18, 0, 4 ),
 				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"Surroundings",
 				"Surroundings",
-				new Version( 1, 2, 0, 3 ),
+				new Version( 1, 2, 0, 4 ),
 				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
@@ -296,7 +296,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TheMadRanger",
 				"The Mad Ranger",
-				new Version( 1, 11, 0 ),
+				new Version( 1, 11, 0, 1 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TrashHistory",
 				"Trash History",
-				new Version( 1, 1, 0 ),
+				new Version( 1, 1, 0, 1 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(
