@@ -59,6 +59,7 @@ namespace AdventureModeSetup {
 
 		private void ConfirmInstall() {
 			var mymod = AMSMod.Instance;
+
 			mymod.UnpackMods_Current();
 			mymod.BackupEnabledMods();
 			mymod.EnableMods_Current();
@@ -80,7 +81,7 @@ namespace AdventureModeSetup {
 			//reloadMethodInfo.Invoke( null, new object[0] );
 
 			//
-
+			
 			Main.menuMode = 10006;  // reload mods 'menu'
 			//Main.menuMode = 10007;	// mod browser
 		}

@@ -56,20 +56,26 @@ namespace AdventureModeSetup {
 
 			//
 
-			this.EnableModsInternally( toEnableMods );
+			this.ExclusivelyEnableModsInternally( toEnableMods );
 		}
 
-		private void EnableModsInternally( IEnumerable<ModInfo> gameModeModInfos ) {
+		private void ExclusivelyEnableModsInternally( IEnumerable<ModInfo> gameModeModInfos ) {
 			FieldInfo enabledModsFieldInfo = typeof( ModLoader )
 				.GetField( "_enabledMods", BindingFlags.NonPublic | BindingFlags.Static );
 
 			object rawInternalEnabledModsData = enabledModsFieldInfo.GetValue( null );
 			HashSet<string> internalEnabledModsData = rawInternalEnabledModsData as HashSet<string>;
 
-			//
-
+			// Enable approved moved
 			foreach( ModInfo modInfo in gameModeModInfos ) {
 				internalEnabledModsData.Add( modInfo.Name );
+			}
+
+			// Disable unapproved mods
+			foreach( string existingEnabledMod in internalEnabledModsData ) {
+				if( !gameModeModInfos.Any(mi => mi.Name == existingEnabledMod) ) {
+					internalEnabledModsData.Remove( existingEnabledMod );
+				}
 			}
 		}
 

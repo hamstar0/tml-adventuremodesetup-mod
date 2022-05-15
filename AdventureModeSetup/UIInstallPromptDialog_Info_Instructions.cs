@@ -94,6 +94,12 @@ namespace AdventureModeSetup {
 					+string.Join( ", ", disabledReqMods.Select(mi=>mi.Name) )
 				);
 			}
+			if( extraMods.Count() > 0 ) {
+				AMSMod.Instance.Logger.Info(
+					"Extraneous mods detected: "
+					+string.Join( ", ", extraMods )
+				);
+			}
 
 			//
 
@@ -103,11 +109,12 @@ namespace AdventureModeSetup {
 
 			//
 
-			string text1 = $"{totalReqMods} mods (of {totalMods} total) will need to be enabled to play this game"
-				+$" mode{text1A}. Any existing enabled mods will be backed up as the '{AMSMod.BackupFileBaseName}'"
-				+$" mod pack (see the Mods -> Mod Packs menu).";
-			string text2 = $"Be sure to check if any mod updates exist in the Mod Browser menu, if you want."
-				+$" Happy trails!";
+			//string text1 = $"{totalReqMods} mods (of {totalMods} total) will need to be enabled to play this game"
+			string text1 = $"{totalMods} mods ({totalReqMods} required) will be enabled for this game"
+				+$" mode{text1A}. Your existing enabled mods list will be saved as a mod pack called"
+				+$" '{AMSMod.BackupFileBaseName}' (see the Mods -> Mod Packs menu).";
+			string text2 = $"After installation, be sure to check if any mod updates exist in the Mod Browser menu,"
+				+$" if you want. Happy trails!";
 
 			//
 
