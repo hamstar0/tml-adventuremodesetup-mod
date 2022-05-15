@@ -72,7 +72,7 @@ namespace AdventureModeSetup {
 			}
 
 			// Disable unapproved mods
-			foreach( string existingEnabledMod in internalEnabledModsData ) {
+			foreach( string existingEnabledMod in internalEnabledModsData.ToArray() ) {
 				if( !gameModeModInfos.Any(mi => mi.Name == existingEnabledMod) ) {
 					internalEnabledModsData.Remove( existingEnabledMod );
 				}
