@@ -31,7 +31,7 @@ namespace AdventureModeSetup {
 				version += $" (beta)";
 			}
 
-			elemList.Add( (new UIText($"Welcome to Adventure Mode{version}", 1f, true), 40f) );
+			elemList.Add( (new UIText($"Welcome to Adventure Mode{version}", 0.75f, true), 40f) );
 
 			//
 
