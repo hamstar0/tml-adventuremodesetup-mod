@@ -254,7 +254,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ReadableBooks",
 				"Readable Books",
-				new Version( 1, 3, 0 ),
+				new Version( 1, 3, 0, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
