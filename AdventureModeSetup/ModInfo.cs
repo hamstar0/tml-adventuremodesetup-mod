@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 54, 0 ),
+				new Version( 0, 54, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -296,7 +296,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TheMadRanger",
 				"The Mad Ranger",
-				new Version( 1, 11, 0, 1 ),
+				new Version( 1, 11, 0, 2 ),
 				ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -314,7 +314,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"WorldGates",
 				"World Gates",
-				new Version( 1, 3, 1 ),
+				new Version( 1, 3, 1, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			)
