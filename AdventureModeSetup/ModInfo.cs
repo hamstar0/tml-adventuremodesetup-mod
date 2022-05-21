@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 54, 1 ),
+				new Version( 0, 55, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -41,14 +41,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"BossReigns",
 				"Boss Reigns",
-				new Version( 1, 4, 0, 2 ),
+				new Version( 1, 4, 0, 3 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
 				"Bullwhip",
 				"Bullwhip",
 				new Version( 1, 6, 3, 1 ),
-				ModTypeFlags.Content
+				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"CursedBones",
@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 1, 0, 5 ),
+				new Version( 2, 2, 0 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -95,7 +95,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"HUDElementsLib",
 				"HUD Elements Lib",
-				new Version( 5, 0, 0 ),
+				new Version( 5, 0, 0, 1 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -107,7 +107,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"LostExpeditions",
 				"Lost Expeditions",
-				new Version( 1, 1, 2, 1 ),
+				new Version( 1, 1, 3 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -137,7 +137,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"ModLibsGeneral",
 				"Mod Libs - General",
-				new Version( 1, 7, 2 ),
+				new Version( 1, 7, 3 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -192,7 +192,7 @@ namespace AdventureModeSetup {
 				"MoreItemInfo",
 				"More Item Info",
 				new Version( 1, 5, 0 ),
-				ModTypeFlags.Info
+				ModTypeFlags.Info | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"MountedMagicMirrors",
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 6, 1 ),
+				new Version( 2, 2, 6, 2 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -222,14 +222,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Orbs",
 				"Orbs",
-				new Version( 1, 9, 0, 3 ),
+				new Version( 1, 9, 0, 4 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 3, 0, 0, 1 ),
+				new Version( 4, 0, 0 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -297,12 +297,12 @@ namespace AdventureModeSetup {
 				"TheMadRanger",
 				"The Mad Ranger",
 				new Version( 1, 11, 0, 2 ),
-				ModTypeFlags.Content
+				ModTypeFlags.Content | ModTypeFlags.Optional
 			),
 			new ModInfo(
 				"TheTrickster",
 				"The Trickster",
-				new Version( 1, 7, 5, 7 ),
+				new Version( 1, 7, 5, 8 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Content
 			),
 			new ModInfo(
