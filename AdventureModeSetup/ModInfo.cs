@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 55, 0 ),
+				new Version( 0, 55, 0, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -95,7 +95,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"HUDElementsLib",
 				"HUD Elements Lib",
-				new Version( 5, 0, 0, 1 ),
+				new Version( 5, 0, 0, 3 ),
 				ModTypeFlags.ModResource
 			),
 			new ModInfo(
