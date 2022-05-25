@@ -22,14 +22,14 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 55, 2 ),
+				new Version( 0, 56, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
 			new ModInfo(
 				"AdventureModeLore",
 				"Adventure Mode - Setting",
-				new Version( 0, 21, 2 ),
+				new Version( 0, 21, 2, 1 ),
 				ModTypeFlags.Info | ModTypeFlags.Content
 			),
 			new ModInfo(
@@ -41,7 +41,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"BossReigns",
 				"Boss Reigns",
-				new Version( 1, 4, 0, 3 ),
+				new Version( 1, 4, 0, 4 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -59,13 +59,13 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"CursedBrambles",
 				"Cursed Brambles",
-				new Version( 1, 3, 1, 2 ),
+				new Version( 2, 0, 0 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics | ModTypeFlags.ModResource
 			),
 			new ModInfo(
 				"Enraged",
 				"Enraged!",
-				new Version( 0, 14, 0 ),
+				new Version( 1, 0, 0 ),
 				ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 6, 2 ),
+				new Version( 2, 2, 6, 3 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
