@@ -113,7 +113,7 @@ namespace AdventureModeSetup {
 
 //this.Logger.Info( $"folder 1: \"{backupPath}\"" );
 			for( int i=0; FileUtilities.Exists(backupPath, false); i++ ) {
-				backupPath = $"{modPacksFolder}{div}{AMSMod.BackupFileBaseName} ({i}).json";
+				backupPath = $"{modPacksFolder}{div}{AMSMod.BackupFileBaseName}{i}.json";
 			}
 
 			//

@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 56, 0 ),
+				new Version( 0, 57, 0 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -203,7 +203,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"Necrotis",
 				"Necrotis",
-				new Version( 2, 2, 6, 3 ),
+				new Version( 2, 2, 6, 4 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -229,7 +229,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"PKEMeter",
 				"P.K.E Analysis Device",
-				new Version( 4, 0, 0 ),
+				new Version( 4, 1, 0 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics | ModTypeFlags.Content
 					| ModTypeFlags.ModResource
 			),
@@ -302,7 +302,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TheTrickster",
 				"The Trickster",
-				new Version( 1, 7, 5, 8 ),
+				new Version( 1, 7, 5, 9 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Content
 			),
 			new ModInfo(

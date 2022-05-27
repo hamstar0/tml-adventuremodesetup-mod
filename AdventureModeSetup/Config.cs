@@ -21,7 +21,10 @@ namespace AdventureModeSetup {
 		public bool ForceInstallPromptEachLoad { get; set; } = false;
 
 		public List<string> NonAdventureModeModsAllowed { get; set; } = new List<string>() {
-			"CheatSheet"
+			"CheatSheet",
+			"Miscellaniety",
+			"ShorterRespawn",
+			"WorldGenPreviewer"
 		};
 
 		public List<string> SkipLoadingMods { get; set; } = new List<string>() {};
