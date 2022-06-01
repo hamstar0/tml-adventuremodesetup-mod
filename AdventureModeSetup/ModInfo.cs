@@ -22,7 +22,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"AdventureMode",
 				"Adventure Mode - Basics",
-				new Version( 0, 57, 0 ),
+				new Version( 0, 57, 1 ),
 				ModTypeFlags.GameMode | ModTypeFlags.GameRules | ModTypeFlags.Info | ModTypeFlags.Mechanics
 					| ModTypeFlags.Content
 			),
@@ -77,7 +77,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"FindableManaCrystals",
 				"Findable Mana Crystals",
-				new Version( 2, 2, 0 ),
+				new Version( 2, 2, 1 ),
 				ModTypeFlags.Content | ModTypeFlags.Mechanics
 			),
 			new ModInfo(
@@ -101,7 +101,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"LockedAbilities",
 				"Locked Abilities",
-				new Version( 1, 3, 1, 2 ),
+				new Version( 1, 3, 2 ),
 				ModTypeFlags.GameRules | ModTypeFlags.Mechanics | ModTypeFlags.Content | ModTypeFlags.ModResource
 			),
 			new ModInfo(
@@ -308,7 +308,7 @@ namespace AdventureModeSetup {
 			new ModInfo(
 				"TrashHistory",
 				"Trash History",
-				new Version( 1, 1, 0, 1 ),
+				new Version( 1, 1, 0, 2 ),
 				ModTypeFlags.Mechanics | ModTypeFlags.Optional
 			),
 			new ModInfo(
